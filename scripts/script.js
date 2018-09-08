@@ -1,9 +1,9 @@
 function initAutocomplete() {
   // object for current position
-  // var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
   // drawing initial map
-  var map = new google.maps.Map(document.getElementById('map'), {
+  let map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 49.2606, lng: 123.2460 },
     zoom: 13,
     mapTypeId: 'roadmap'
@@ -12,8 +12,8 @@ function initAutocomplete() {
   _currentLocation(map);
 
   // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
+  let input = document.getElementById('pac-input');
+  let searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
@@ -21,11 +21,11 @@ function initAutocomplete() {
     searchBox.setBounds(map.getBounds());
   });
 
-  var markers = [];
+  let markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function () {
-    var places = searchBox.getPlaces();
+    let places = searchBox.getPlaces();
 
     if (places.length == 0) {
       return;
@@ -38,13 +38,13 @@ function initAutocomplete() {
     markers = [];
 
     // For each place, get the icon, name and location.
-    var bounds = new google.maps.LatLngBounds();
+    let bounds = new google.maps.LatLngBounds();
     places.forEach(function (place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
         return;
       }
-      var icon = {
+      let icon = {
         url: place.icon,
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
@@ -70,24 +70,19 @@ function initAutocomplete() {
     map.fitBounds(bounds);
   });
 
-  _loadDatasets(map);
-  /*   $.getJSON("/datasets/collisions-1.json"), function( data ) {
-      console.log("in get JSON");
-      
-      _loadDatasets(map , data);
-    } */
+  // _markerMap(map, '/datasets/collisions-2.json');
+  _heatMap(map, '/datasets/pedestrian_lat_lon.json');
 }
 function _currentLocation(map) {
-  console.log("currentlocation");
   // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
+      let pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
       // set a marker 
-      var currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
+      let currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
 
       /*
       // set an info window
@@ -115,9 +110,9 @@ function _currentLocation(map) {
   }
 }
 
-function _loadDatasets(map) {
+function _markerMap(map, dataset) {
   // load JSON data
-  $.getJSON('/datasets/collisions-2.json', function (data) {
+  $.getJSON(dataset, function (data) {
     for (collision of data) {
       let marker = new google.maps.Marker({
         map: map,
@@ -126,5 +121,38 @@ function _loadDatasets(map) {
       })
     }
   });
+}
 
+// https://developers.google.com/maps/documentation/javascript/heatmaplayer
+function _heatMap(map, dataset) {
+  let heatMapData = [];
+  $.getJSON(dataset, function (data) {
+    for (coordinate of data) {
+      heatMapData.push(new google.maps.LatLng(coordinate.lat, coordinate.lon));
+    }
+    let gradient = [
+      'rgba(0, 255, 255, 0)',
+      'rgba(0, 255, 255, 1)',
+      'rgba(0, 191, 255, 1)',
+      'rgba(0, 127, 255, 1)',
+      'rgba(0, 63, 255, 1)',
+      'rgba(0, 0, 255, 1)',
+      'rgba(0, 0, 223, 1)',
+      'rgba(0, 0, 191, 1)',
+      'rgba(0, 0, 159, 1)',
+      'rgba(0, 0, 127, 1)',
+      'rgba(63, 0, 91, 1)',
+      'rgba(127, 0, 63, 1)',
+      'rgba(191, 0, 31, 1)',
+      'rgba(255, 0, 0, 1)'
+    ]
+
+    let heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatMapData,
+      radius: 28,
+      opacity: .5,
+      gradient: gradient
+    });
+    heatmap.setMap(map);
+  })
 }

@@ -71,7 +71,8 @@ function initAutocomplete() {
   });
 
   // _markerMap(map, '/datasets/collisions-2.json');
-  _heatMap(map, '/datasets/pedestrian_lat_lon.json');
+  // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
+  _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
 function _currentLocation(map) {
   // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
@@ -125,6 +126,39 @@ function _markerMap(map, dataset) {
 
 // https://developers.google.com/maps/documentation/javascript/heatmaplayer
 function _heatMap(map, dataset) {
+  let heatMapData = [];
+  $.getJSON(dataset, function (data) {
+    for (coordinate of data) {
+      heatMapData.push(new google.maps.LatLng(coordinate.lat, coordinate.lon));
+    }
+    let gradient = [
+      'rgba(0, 255, 255, 0)',
+      'rgba(0, 255, 255, 1)',
+      'rgba(0, 191, 255, 1)',
+      'rgba(0, 127, 255, 1)',
+      'rgba(0, 63, 255, 1)',
+      'rgba(0, 0, 255, 1)',
+      'rgba(0, 0, 223, 1)',
+      'rgba(0, 0, 191, 1)',
+      'rgba(0, 0, 159, 1)',
+      'rgba(0, 0, 127, 1)',
+      'rgba(63, 0, 91, 1)',
+      'rgba(127, 0, 63, 1)',
+      'rgba(191, 0, 31, 1)',
+      'rgba(255, 0, 0, 1)'
+    ]
+
+    let heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatMapData,
+      radius: 28,
+      opacity: .5,
+      gradient: gradient
+    });
+    heatmap.setMap(map);
+  })
+}
+
+function _weightedHeatMap(map, dataset) {
   let heatMapData = [];
   $.getJSON(dataset, function (data) {
     for (coordinate of data) {

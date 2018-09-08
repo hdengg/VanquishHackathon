@@ -1,60 +1,15 @@
-
-// This example adds a search box to a map, using the Google Place Autocomplete
-// feature. People can enter geographical searches. The search box will return a
-// pick list containing a mix of places and predicted search terms.
-
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
 function initAutocomplete() {
   // object for current position
   // var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
   // drawing initial map
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 49.2630917, lng: -123.1142624 },
+    center: { lat: 49.2606, lng: 123.2460 },
     zoom: 13,
     mapTypeId: 'roadmap'
   });
 
-  // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      // set a marker 
-      var currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
-
-      /*
-      // set an info window
-      infoWindow = new google.maps.InfoWindow;
-
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Current Location');
-      infoWindow.open(map);
-      */
-
-      map.setCenter(pos);
-    }, function () {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-  }
-  // end of current location
+  _currentLocation(map);
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
@@ -114,4 +69,62 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
+
+  _loadDatasets(map);
+  /*   $.getJSON("/datasets/collisions-1.json"), function( data ) {
+      console.log("in get JSON");
+      
+      _loadDatasets(map , data);
+    } */
+}
+function _currentLocation(map) {
+  console.log("currentlocation");
+  // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      // set a marker 
+      var currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
+
+      /*
+      // set an info window
+      infoWindow = new google.maps.InfoWindow;
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Current Location');
+      infoWindow.open(map);
+      */
+
+      map.setCenter(pos);
+    }, function () {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+  }
+}
+
+function _loadDatasets(map) {
+  // load JSON data
+  $.getJSON('/datasets/collisions-2.json', function (data) {
+    for (collision of data) {
+      let marker = new google.maps.Marker({
+        map: map,
+        id: collision.covId,
+        position: new google.maps.LatLng(collision.lat, collision.lon)
+      })
+    }
+  });
+
 }

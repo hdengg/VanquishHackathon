@@ -1,3 +1,4 @@
+
 function initAutocomplete() {
   // object for current position
   // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -124,6 +125,60 @@ function _markerMap(map, dataset) {
   });
 }
 
+// filtering 
+function _changeMap() {
+    let searchString0 = document.getElementById('search-string_0').value;
+    let searchString1 = document.getElementById('search-string_1').value;
+    let searchString2 = document.getElementById('search-string_2').value;
+    const jsonData = require('/datasets/weighted_data_fixed');
+    console.log(jsonData);
+
+
+    if (searchString0 !== '--Select--') {
+        //
+    }
+
+    if (searchString1 !== '--Select--') {
+        let query = {
+            age: searchString1
+        };
+        console.log(searchString1);
+        let filteredData = find_in_object(jsonData, query);
+        for (collision of filteredData) {
+            let marker = new google.maps.Marker({
+                map: map,
+                id: collision.covId,
+                position: new google.maps.LatLng(collision.lat, collision.lon)
+            });
+        }
+    }
+
+    if (searchString2 !== '--Select--') {
+        let query = {
+            gender: searchString2
+        };
+        let filteredData = find_in_object(jsonData, query);
+        for (collision of filteredData) {
+            let marker = new google.maps.Marker({
+                map: map,
+                id: collision.covId,
+                position: new google.maps.LatLng(collision.lat, collision.lon)
+            });
+        }
+    }
+}
+
+function find_in_object(my_array, my_criteria) {
+    return my_array.filter(function (obj) {
+        return Object.keys(my_criteria).every(function (key) {
+            return (Array.isArray(my_criteria[key]) &&
+                (my_criteria[key].some(function (criteria) {
+                    return (typeof obj[key] === 'string' && obj[key].indexOf(criteria) === -1)
+                })) || my_criteria[key].length === 0);
+        });
+    });
+}
+
 // https://developers.google.com/maps/documentation/javascript/heatmaplayer
 function _heatMap(map, dataset) {
   let heatMapData = [];
@@ -179,7 +234,7 @@ function _weightedHeatMap(map, dataset) {
       'rgba(127, 0, 63, 1)',
       'rgba(191, 0, 31, 1)',
       'rgba(255, 0, 0, 1)'
-    ]
+    ];
 
     let heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatMapData,

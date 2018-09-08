@@ -1,0 +1,1676 @@
+[
+  {
+    "": 0,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": "",
+    "longitude": -123.13995301723499,
+    "latitude": 49.3137750446758,
+    "Injury Type": 1
+  },
+  {
+    "": 1,
+    "i_type": "Fall",
+    "incident_with": "Roadway",
+    "age": "",
+    "longitude": -123.13307046890301,
+    "latitude": 49.2930430721181,
+    "Injury Type": 1
+  },
+  {
+    "": 2,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 59,
+    "longitude": -123.107610940933,
+    "latitude": 49.2771637675976,
+    "Injury Type": 1
+  },
+  {
+    "": 3,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 24,
+    "longitude": -123.039107322693,
+    "latitude": 49.2505795119878,
+    "Injury Type": 1
+  },
+  {
+    "": 4,
+    "i_type": "Fall",
+    "incident_with": "Curb",
+    "age": 31,
+    "longitude": -123.197507858276,
+    "latitude": 49.2581704731604,
+    "Injury Type": 1
+  },
+  {
+    "": 5,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 26,
+    "longitude": -123.105497360229,
+    "latitude": 49.2373170389301,
+    "Injury Type": 1
+  },
+  {
+    "": 6,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": 59,
+    "longitude": -123.145532011986,
+    "latitude": 49.2952576502376,
+    "Injury Type": 1
+  },
+  {
+    "": 7,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 45,
+    "longitude": -123.073101639748,
+    "latitude": 49.2271410084967,
+    "Injury Type": 1
+  },
+  {
+    "": 8,
+    "i_type": "Fall",
+    "incident_with": "Pedestrian",
+    "age": 53,
+    "longitude": -123.03516983985901,
+    "latitude": 49.2882392297535,
+    "Injury Type": 1
+  },
+  {
+    "": 9,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 26,
+    "longitude": -123.24798703193701,
+    "latitude": 49.2692326985402,
+    "Injury Type": 1
+  },
+  {
+    "": 10,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 26,
+    "longitude": -123.14633667469,
+    "latitude": 49.2725438824224,
+    "Injury Type": 1
+  },
+  {
+    "": 11,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 43,
+    "longitude": -123.063912391663,
+    "latitude": 49.259507873953,
+    "Injury Type": 1
+  },
+  {
+    "": 12,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": "",
+    "longitude": -123.08027923107099,
+    "latitude": 49.221686073575704,
+    "Injury Type": 1
+  },
+  {
+    "": 13,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": "",
+    "longitude": -123.121118545532,
+    "latitude": 49.2652981911506,
+    "Injury Type": 1
+  },
+  {
+    "": 14,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 35,
+    "longitude": -123.118822574615,
+    "latitude": 49.2746123845086,
+    "Injury Type": 1
+  },
+  {
+    "": 15,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": 33,
+    "longitude": -123.122089505196,
+    "latitude": 49.2623891142919,
+    "Injury Type": 1
+  },
+  {
+    "": 16,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 29,
+    "longitude": -123.101634979248,
+    "latitude": 49.272998890322796,
+    "Injury Type": 1
+  },
+  {
+    "": 17,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": "",
+    "longitude": -123.18578944818,
+    "latitude": 49.264408052823704,
+    "Injury Type": 1
+  },
+  {
+    "": 18,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 26,
+    "longitude": -123.14780652523001,
+    "latitude": 49.2725088816409,
+    "Injury Type": 1
+  },
+  {
+    "": 19,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 31,
+    "longitude": -123.069539666176,
+    "latitude": 49.26369547784739,
+    "Injury Type": 1
+  },
+  {
+    "": 20,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 12,
+    "longitude": -123.120238780975,
+    "latitude": 49.2534927864129,
+    "Injury Type": 1
+  },
+  {
+    "": 21,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.241066932678,
+    "latitude": 49.2542350836611,
+    "Injury Type": 1
+  },
+  {
+    "": 22,
+    "i_type": "Fall",
+    "incident_with": "Another cyclist",
+    "age": "",
+    "longitude": -123.13296854496001,
+    "latitude": 49.2767997923471,
+    "Injury Type": 1
+  },
+  {
+    "": 23,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.104944825172,
+    "latitude": 49.2488636809814,
+    "Injury Type": 1
+  },
+  {
+    "": 24,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.116204738617,
+    "latitude": 49.2774647451027,
+    "Injury Type": 1
+  },
+  {
+    "": 25,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 44,
+    "longitude": -123.028292655945,
+    "latitude": 49.2879348190189,
+    "Injury Type": 1
+  },
+  {
+    "": 26,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 31,
+    "longitude": -123.101699352264,
+    "latitude": 49.2722008736924,
+    "Injury Type": 1
+  },
+  {
+    "": 27,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 28,
+    "longitude": -123.132383823395,
+    "latitude": 49.2769012857158,
+    "Injury Type": 1
+  },
+  {
+    "": 28,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": "",
+    "longitude": -123.115046024322,
+    "latitude": 49.26308576804979,
+    "Injury Type": 1
+  },
+  {
+    "": 29,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": 45,
+    "longitude": -123.12875747680701,
+    "latitude": 49.2780631949179,
+    "Injury Type": 1
+  },
+  {
+    "": 30,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 37,
+    "longitude": -123.130688667297,
+    "latitude": 49.266488377731,
+    "Injury Type": 1
+  },
+  {
+    "": 31,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 20,
+    "longitude": -123.13139677047701,
+    "latitude": 49.27625382443521,
+    "Injury Type": 1
+  },
+  {
+    "": 32,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 28,
+    "longitude": -123.146433234215,
+    "latitude": 49.2725508825758,
+    "Injury Type": 1
+  },
+  {
+    "": 33,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": 65,
+    "longitude": -123.10129165649401,
+    "latitude": 49.2433235909494,
+    "Injury Type": 1
+  },
+  {
+    "": 34,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 32,
+    "longitude": -123.112959265709,
+    "latitude": 49.2617729701094,
+    "Injury Type": 1
+  },
+  {
+    "": 35,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 35,
+    "longitude": -123.085638284683,
+    "latitude": 49.25471827115501,
+    "Injury Type": 1
+  },
+  {
+    "": 36,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": "",
+    "longitude": -123.080778121948,
+    "latitude": 49.2089695685391,
+    "Injury Type": 1
+  },
+  {
+    "": 37,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": 39,
+    "longitude": -123.053129911423,
+    "latitude": 49.229383067869705,
+    "Injury Type": 1
+  },
+  {
+    "": 38,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 29,
+    "longitude": -123.24983775615699,
+    "latitude": 49.264930627728205,
+    "Injury Type": 1
+  },
+  {
+    "": 39,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 33,
+    "longitude": -123.136186552074,
+    "latitude": 49.26296642037,
+    "Injury Type": 1
+  },
+  {
+    "": 40,
+    "i_type": "Fall",
+    "incident_with": "Other",
+    "age": 34,
+    "longitude": -123.13990473747299,
+    "latitude": 49.271126330905396,
+    "Injury Type": 1
+  },
+  {
+    "": 41,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Other",
+    "age": "",
+    "longitude": -123.178560733795,
+    "latitude": 49.2386094724462,
+    "Injury Type": 1
+  },
+  {
+    "": 42,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": 40,
+    "longitude": -123.102235794067,
+    "latitude": 49.277058775012506,
+    "Injury Type": 1
+  },
+  {
+    "": 43,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 27,
+    "longitude": -123.097032308578,
+    "latitude": 49.2785391498207,
+    "Injury Type": 1
+  },
+  {
+    "": 44,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 41,
+    "longitude": -123.053011894226,
+    "latitude": 49.2582124863021,
+    "Injury Type": 1
+  },
+  {
+    "": 45,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": "",
+    "longitude": -123.131160736084,
+    "latitude": 49.27771672485729,
+    "Injury Type": 1
+  },
+  {
+    "": 46,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": 57,
+    "longitude": -123.102504014969,
+    "latitude": 49.2742518903862,
+    "Injury Type": 1
+  },
+  {
+    "": 47,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 32,
+    "longitude": -123.243346810341,
+    "latitude": 49.26571826028071,
+    "Injury Type": 1
+  },
+  {
+    "": 48,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": "",
+    "longitude": -123.097729682922,
+    "latitude": 49.2173378104265,
+    "Injury Type": 1
+  },
+  {
+    "": 49,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": 29,
+    "longitude": -123.040910239615,
+    "latitude": 49.2445481247276,
+    "Injury Type": 1
+  },
+  {
+    "": 50,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 28,
+    "longitude": -123.114632964134,
+    "latitude": 49.2668874338636,
+    "Injury Type": 1
+  },
+  {
+    "": 51,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 69,
+    "longitude": -123.12880039215099,
+    "latitude": 49.2966535180241,
+    "Injury Type": 1
+  },
+  {
+    "": 52,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 42,
+    "longitude": -123.104960918427,
+    "latitude": 49.2622035716828,
+    "Injury Type": 1
+  },
+  {
+    "": 53,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 30,
+    "longitude": -123.132335543633,
+    "latitude": 49.27702727719339,
+    "Injury Type": 1
+  },
+  {
+    "": 54,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.102927803993,
+    "latitude": 49.270170773196,
+    "Injury Type": 1
+  },
+  {
+    "": 55,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": "",
+    "longitude": -123.182020783424,
+    "latitude": 49.232875573285796,
+    "Injury Type": 1
+  },
+  {
+    "": 56,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 46,
+    "longitude": -123.106237649918,
+    "latitude": 49.216815712817706,
+    "Injury Type": 1
+  },
+  {
+    "": 57,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Sign/Post",
+    "age": 61,
+    "longitude": -123.077253699303,
+    "latitude": 49.2776677288948,
+    "Injury Type": 1
+  },
+  {
+    "": 58,
+    "i_type": "Fall",
+    "incident_with": "Other",
+    "age": 26,
+    "longitude": -123.08743536472299,
+    "latitude": 49.2773982502306,
+    "Injury Type": 1
+  },
+  {
+    "": 59,
+    "i_type": "Fall",
+    "incident_with": "Roadway",
+    "age": 32,
+    "longitude": -123.083674907684,
+    "latitude": 49.2548023032798,
+    "Injury Type": 1
+  },
+  {
+    "": 60,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": 27,
+    "longitude": -123.1251257658,
+    "latitude": 49.278444659139204,
+    "Injury Type": 1
+  },
+  {
+    "": 61,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 29,
+    "longitude": -123.129127621651,
+    "latitude": 49.2790255989824,
+    "Injury Type": 1
+  },
+  {
+    "": 62,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 33,
+    "longitude": -123.104826807976,
+    "latitude": 49.264671581385706,
+    "Injury Type": 1
+  },
+  {
+    "": 63,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.131440865836,
+    "latitude": 49.2762606491809,
+    "Injury Type": 1
+  },
+  {
+    "": 64,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 33,
+    "longitude": -123.13132166862499,
+    "latitude": 49.26522117808889,
+    "Injury Type": 1
+  },
+  {
+    "": 65,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": "",
+    "longitude": -123.07937800884199,
+    "latitude": 49.2651896727108,
+    "Injury Type": 1
+  },
+  {
+    "": 66,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.136117458343,
+    "latitude": 49.262595660904104,
+    "Injury Type": 1
+  },
+  {
+    "": 67,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 42,
+    "longitude": -123.11747074127199,
+    "latitude": 49.2654417151723,
+    "Injury Type": 1
+  },
+  {
+    "": 68,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": 34,
+    "longitude": -123.134803175926,
+    "latitude": 49.246773087921895,
+    "Injury Type": 1
+  },
+  {
+    "": 69,
+    "i_type": "Fall",
+    "incident_with": "Roadway",
+    "age": 28,
+    "longitude": -123.12661501942301,
+    "latitude": 49.2650167428541,
+    "Injury Type": 1
+  },
+  {
+    "": 70,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 26,
+    "longitude": -123.115142583847,
+    "latitude": 49.255691634498795,
+    "Injury Type": 1
+  },
+  {
+    "": 71,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.100063204765,
+    "latitude": 49.269936256204204,
+    "Injury Type": 1
+  },
+  {
+    "": 72,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": 32,
+    "longitude": -123.12871992588,
+    "latitude": 49.2779652036325,
+    "Injury Type": 1
+  },
+  {
+    "": 73,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 56,
+    "longitude": -123.11036825180099,
+    "latitude": 49.27987249902429,
+    "Injury Type": 1
+  },
+  {
+    "": 74,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.05292069912,
+    "latitude": 49.2581914797357,
+    "Injury Type": 1
+  },
+  {
+    "": 75,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 48,
+    "longitude": -123.11739027500201,
+    "latitude": 49.265767268113,
+    "Injury Type": 1
+  },
+  {
+    "": 76,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": 49,
+    "longitude": -123.080863952637,
+    "latitude": 49.2089625593676,
+    "Injury Type": 1
+  },
+  {
+    "": 77,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": 46,
+    "longitude": -123.080735206604,
+    "latitude": 49.208780320559505,
+    "Injury Type": 1
+  },
+  {
+    "": 78,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 42,
+    "longitude": -123.10815274715401,
+    "latitude": 49.2811918143291,
+    "Injury Type": 1
+  },
+  {
+    "": 79,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.09683149684099,
+    "latitude": 49.2775989455097,
+    "Injury Type": 1
+  },
+  {
+    "": 80,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": "",
+    "longitude": -123.124798536301,
+    "latitude": 49.2624241222532,
+    "Injury Type": 1
+  },
+  {
+    "": 81,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.148203492165,
+    "latitude": 49.26278820357761,
+    "Injury Type": 1
+  },
+  {
+    "": 82,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 24,
+    "longitude": -123.128260458107,
+    "latitude": 49.289063844481106,
+    "Injury Type": 1
+  },
+  {
+    "": 83,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": "",
+    "longitude": -123.135859966278,
+    "latitude": 49.295590003296205,
+    "Injury Type": 1
+  },
+  {
+    "": 84,
+    "i_type": "Fall",
+    "incident_with": "Other",
+    "age": "",
+    "longitude": -123.12968015670799,
+    "latitude": 49.2931970112555,
+    "Injury Type": 1
+  },
+  {
+    "": 85,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.06892275810199,
+    "latitude": 49.2775802359834,
+    "Injury Type": 1
+  },
+  {
+    "": 86,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Curb",
+    "age": 60,
+    "longitude": -123.159313201904,
+    "latitude": 49.27262088405439,
+    "Injury Type": 1
+  },
+  {
+    "": 87,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 26,
+    "longitude": -123.133821487427,
+    "latitude": 49.2621895684387,
+    "Injury Type": 1
+  },
+  {
+    "": 88,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": 41,
+    "longitude": -123.124460577965,
+    "latitude": 49.26226133502271,
+    "Injury Type": 1
+  },
+  {
+    "": 89,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": "",
+    "longitude": -123.080768519758,
+    "latitude": 49.20888195403771,
+    "Injury Type": 1
+  },
+  {
+    "": 90,
+    "i_type": "Fall",
+    "incident_with": "Roadway",
+    "age": "",
+    "longitude": -123.08100224716298,
+    "latitude": 49.2087873297969,
+    "Injury Type": 1
+  },
+  {
+    "": 91,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": "",
+    "longitude": -123.090348243713,
+    "latitude": 49.2775417390532,
+    "Injury Type": 1
+  },
+  {
+    "": 92,
+    "i_type": "Fall",
+    "incident_with": "Vehicle, side",
+    "age": 30,
+    "longitude": -123.062710762024,
+    "latitude": 49.2502818721086,
+    "Injury Type": 1
+  },
+  {
+    "": 93,
+    "i_type": "Fall",
+    "incident_with": "Curb",
+    "age": 40,
+    "longitude": -123.02786886691999,
+    "latitude": 49.2901863643011,
+    "Injury Type": 1
+  },
+  {
+    "": 94,
+    "i_type": "Fall",
+    "incident_with": "Curb",
+    "age": 40,
+    "longitude": -123.02786886691999,
+    "latitude": 49.2901863643011,
+    "Injury Type": 1
+  },
+  {
+    "": 95,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": 45,
+    "longitude": -123.08081256142,
+    "latitude": 49.2088496765535,
+    "Injury Type": 1
+  },
+  {
+    "": 96,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": "",
+    "longitude": -123.093599081039,
+    "latitude": 49.277604734014204,
+    "Injury Type": 1
+  },
+  {
+    "": 97,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": "",
+    "longitude": -123.147729652957,
+    "latitude": 49.2913647896601,
+    "Injury Type": 1
+  },
+  {
+    "": 98,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": "",
+    "longitude": -123.11619937419901,
+    "latitude": 49.2835678926535,
+    "Injury Type": 1
+  },
+  {
+    "": 99,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": 12,
+    "longitude": -123.080829464789,
+    "latitude": 49.208848411314605,
+    "Injury Type": 1
+  },
+  {
+    "": 100,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 40,
+    "longitude": -123.064355962633,
+    "latitude": 49.24519140442679,
+    "Injury Type": 1
+  },
+  {
+    "": 101,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 61,
+    "longitude": -123.06610643863701,
+    "latitude": 49.277436747272795,
+    "Injury Type": 1
+  },
+  {
+    "": 102,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": "",
+    "longitude": -123.044171333313,
+    "latitude": 49.27747874401171,
+    "Injury Type": 1
+  },
+  {
+    "": 103,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": "",
+    "longitude": -123.20297956466699,
+    "latitude": 49.2631820385244,
+    "Injury Type": 1
+  },
+  {
+    "": 104,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": 31,
+    "longitude": -123.118393421173,
+    "latitude": 49.28486261468329,
+    "Injury Type": 1
+  },
+  {
+    "": 105,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 33,
+    "longitude": -123.14356461167299,
+    "latitude": 49.2589879724534,
+    "Injury Type": 1
+  },
+  {
+    "": 106,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": 25,
+    "longitude": -123.08333158493,
+    "latitude": 49.2615314114841,
+    "Injury Type": 1
+  },
+  {
+    "": 107,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 21,
+    "longitude": -123.073418586989,
+    "latitude": 49.27143886688211,
+    "Injury Type": 1
+  },
+  {
+    "": 108,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Other",
+    "age": 64,
+    "longitude": -123.061938285828,
+    "latitude": 49.2659002891265,
+    "Injury Type": 1
+  },
+  {
+    "": 109,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 33,
+    "longitude": -123.113356361318,
+    "latitude": 49.2622073455667,
+    "Injury Type": 1
+  },
+  {
+    "": 110,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 33,
+    "longitude": -123.113356361318,
+    "latitude": 49.2622073455667,
+    "Injury Type": 1
+  },
+  {
+    "": 111,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 33,
+    "longitude": -123.113356361318,
+    "latitude": 49.2622073455667,
+    "Injury Type": 1
+  },
+  {
+    "": 112,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 33,
+    "longitude": -123.113356361318,
+    "latitude": 49.2622073455667,
+    "Injury Type": 1
+  },
+  {
+    "": 113,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": "",
+    "longitude": -123.190107643604,
+    "latitude": 49.2714710971836,
+    "Injury Type": 1
+  },
+  {
+    "": 114,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": "",
+    "longitude": -123.119943737984,
+    "latitude": 49.26141938389421,
+    "Injury Type": 1
+  },
+  {
+    "": 115,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": "",
+    "longitude": -123.11053723096799,
+    "latitude": 49.2798873721389,
+    "Injury Type": 1
+  },
+  {
+    "": 116,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Lane divider",
+    "age": 35,
+    "longitude": -123.113914132118,
+    "latitude": 49.2622770886491,
+    "Injury Type": 1
+  },
+  {
+    "": 117,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Animal",
+    "age": 34,
+    "longitude": -123.08794498443599,
+    "latitude": 49.26157342176471,
+    "Injury Type": 1
+  },
+  {
+    "": 118,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": 54,
+    "longitude": -123.10000956058501,
+    "latitude": 49.2776327317488,
+    "Injury Type": 1
+  },
+  {
+    "": 119,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 37,
+    "longitude": -123.07691574096701,
+    "latitude": 49.236833681121,
+    "Injury Type": 1
+  },
+  {
+    "": 120,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 27,
+    "longitude": -123.11280906200399,
+    "latitude": 49.2657287619631,
+    "Injury Type": 1
+  },
+  {
+    "": 121,
+    "i_type": "Fall",
+    "incident_with": "Roadway",
+    "age": 34,
+    "longitude": -123.236084729433,
+    "latitude": 49.2559603564293,
+    "Injury Type": 1
+  },
+  {
+    "": 122,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 34,
+    "longitude": -123.113039731979,
+    "latitude": 49.25953938295879,
+    "Injury Type": 1
+  },
+  {
+    "": 123,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": "",
+    "longitude": -123.13526988029498,
+    "latitude": 49.271519224264296,
+    "Injury Type": 1
+  },
+  {
+    "": 124,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": 31,
+    "longitude": -123.20321559906,
+    "latitude": 49.2581424643794,
+    "Injury Type": 1
+  },
+  {
+    "": 125,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": "",
+    "longitude": -123.10425013303801,
+    "latitude": 49.2719956798298,
+    "Injury Type": 1
+  },
+  {
+    "": 126,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": "",
+    "longitude": -123.123199939728,
+    "latitude": 49.2643320185797,
+    "Injury Type": 1
+  },
+  {
+    "": 127,
+    "i_type": "Fall",
+    "incident_with": "Vehicle, side",
+    "age": 46,
+    "longitude": -123.081322610378,
+    "latitude": 49.26526231008,
+    "Injury Type": 1
+  },
+  {
+    "": 128,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": "",
+    "longitude": -123.104416429996,
+    "latitude": 49.279244324559706,
+    "Injury Type": 1
+  },
+  {
+    "": 129,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Other",
+    "age": "",
+    "longitude": -123.10380220413201,
+    "latitude": 49.2701917746632,
+    "Injury Type": 1
+  },
+  {
+    "": 130,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Lane divider",
+    "age": 53,
+    "longitude": -123.142147064209,
+    "latitude": 49.208542007258394,
+    "Injury Type": 1
+  },
+  {
+    "": 131,
+    "i_type": "Fall",
+    "incident_with": "Another cyclist",
+    "age": "",
+    "longitude": -123.124821335077,
+    "latitude": 49.29784469724171,
+    "Injury Type": 1
+  },
+  {
+    "": 132,
+    "i_type": "Fall",
+    "incident_with": "Curb",
+    "age": 35,
+    "longitude": -123.095573186874,
+    "latitude": 49.2673915001546,
+    "Injury Type": 1
+  },
+  {
+    "": 133,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 34,
+    "longitude": -123.12513649463699,
+    "latitude": 49.2785391498207,
+    "Injury Type": 1
+  },
+  {
+    "": 134,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 25,
+    "longitude": -123.074008226395,
+    "latitude": 49.214506503565595,
+    "Injury Type": 1
+  },
+  {
+    "": 135,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 53,
+    "longitude": -123.14101248979601,
+    "latitude": 49.262691932334796,
+    "Injury Type": 1
+  },
+  {
+    "": 136,
+    "i_type": "Fall",
+    "incident_with": "Roadway",
+    "age": 49,
+    "longitude": -123.06817710399599,
+    "latitude": 49.283454165445605,
+    "Injury Type": 1
+  },
+  {
+    "": 137,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 31,
+    "longitude": -123.100655972958,
+    "latitude": 49.270422790213004,
+    "Injury Type": 1
+  },
+  {
+    "": 138,
+    "i_type": "Fall",
+    "incident_with": "Other",
+    "age": 42,
+    "longitude": -123.10492202639601,
+    "latitude": 49.2621055488908,
+    "Injury Type": 1
+  },
+  {
+    "": 139,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": 29,
+    "longitude": -123.069459199905,
+    "latitude": 49.27452576116139,
+    "Injury Type": 1
+  },
+  {
+    "": 140,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 41,
+    "longitude": -123.07925730943701,
+    "latitude": 49.2775395517268,
+    "Injury Type": 1
+  },
+  {
+    "": 141,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": 64,
+    "longitude": -123.115475177765,
+    "latitude": 49.2623296007009,
+    "Injury Type": 1
+  },
+  {
+    "": 142,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": 64,
+    "longitude": -123.11824858188601,
+    "latitude": 49.2623401031045,
+    "Injury Type": 1
+  },
+  {
+    "": 143,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": "",
+    "longitude": -123.070332528405,
+    "latitude": 49.2639693489518,
+    "Injury Type": 1
+  },
+  {
+    "": 144,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 48,
+    "longitude": -123.119938373566,
+    "latitude": 49.2628547181448,
+    "Injury Type": 1
+  },
+  {
+    "": 145,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 37,
+    "longitude": -123.098897195268,
+    "latitude": 49.25834911231811,
+    "Injury Type": 1
+  },
+  {
+    "": 146,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": "",
+    "longitude": -123.03372144699101,
+    "latitude": 49.2555935987722,
+    "Injury Type": 1
+  },
+  {
+    "": 147,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.11397850513501,
+    "latitude": 49.2820771706053,
+    "Injury Type": 1
+  },
+  {
+    "": 148,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 53,
+    "longitude": -123.056611418724,
+    "latitude": 49.2585695965626,
+    "Injury Type": 1
+  },
+  {
+    "": 149,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 41,
+    "longitude": -123.100996613503,
+    "latitude": 49.2620792927526,
+    "Injury Type": 1
+  },
+  {
+    "": 150,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": 42,
+    "longitude": -123.10054688484101,
+    "latitude": 49.258394528839595,
+    "Injury Type": 1
+  },
+  {
+    "": 151,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, rear end",
+    "age": 35,
+    "longitude": -123.043645620346,
+    "latitude": 49.2067686398532,
+    "Injury Type": 1
+  },
+  {
+    "": 152,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 22,
+    "longitude": -123.080306053162,
+    "latitude": 49.2218857831612,
+    "Injury Type": 1
+  },
+  {
+    "": 153,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 48,
+    "longitude": -123.13398778438601,
+    "latitude": 49.29254626525889,
+    "Injury Type": 1
+  },
+  {
+    "": 154,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": 37,
+    "longitude": -123.104199171066,
+    "latitude": 49.2719768667037,
+    "Injury Type": 1
+  },
+  {
+    "": 155,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": 26,
+    "longitude": -123.07732880115499,
+    "latitude": 49.2696352327601,
+    "Injury Type": 1
+  },
+  {
+    "": 156,
+    "i_type": "Fall",
+    "incident_with": "Vehicle, rear end",
+    "age": 48,
+    "longitude": -123.15026879310601,
+    "latitude": 49.243120465848506,
+    "Injury Type": 1
+  },
+  {
+    "": 157,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 51,
+    "longitude": -123.112924396992,
+    "latitude": 49.26318553926539,
+    "Injury Type": 1
+  },
+  {
+    "": 158,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.089570403099,
+    "latitude": 49.2565039230278,
+    "Injury Type": 1
+  },
+  {
+    "": 159,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Pothole",
+    "age": "",
+    "longitude": -123.123232126236,
+    "latitude": 49.2883337016683,
+    "Injury Type": 1
+  },
+  {
+    "": 160,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Vehicle, open door",
+    "age": 35,
+    "longitude": -123.097276389599,
+    "latitude": 49.2620162779642,
+    "Injury Type": 1
+  },
+  {
+    "": 161,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 40,
+    "longitude": -123.106918931007,
+    "latitude": 49.258517080509904,
+    "Injury Type": 1
+  },
+  {
+    "": 162,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, head on",
+    "age": 38,
+    "longitude": -123.113468885422,
+    "latitude": 49.281706232748604,
+    "Injury Type": 1
+  },
+  {
+    "": 163,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 42,
+    "longitude": -123.05886022563801,
+    "latitude": 49.232787613911,
+    "Injury Type": 1
+  },
+  {
+    "": 164,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": 29,
+    "longitude": -123.136007487774,
+    "latitude": 49.27068880677879,
+    "Injury Type": 1
+  },
+  {
+    "": 165,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Another cyclist",
+    "age": "",
+    "longitude": -123.139255921851,
+    "latitude": 49.2802977073454,
+    "Injury Type": 1
+  },
+  {
+    "": 166,
+    "i_type": "Collision with stationary object or vehicle",
+    "incident_with": "Other",
+    "age": 57,
+    "longitude": -123.12436670064899,
+    "latitude": 49.2570991259636,
+    "Injury Type": 1
+  },
+  {
+    "": 167,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": "",
+    "longitude": -123.080788850784,
+    "latitude": 49.208850412488204,
+    "Injury Type": 1
+  },
+  {
+    "": 168,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": "",
+    "longitude": -123.080794215202,
+    "latitude": 49.208843403299895,
+    "Injury Type": 1
+  },
+  {
+    "": 169,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 65,
+    "longitude": -123.106795549393,
+    "latitude": 49.282927517571004,
+    "Injury Type": 1
+  },
+  {
+    "": 170,
+    "i_type": "Fall",
+    "incident_with": "Vehicle, head on",
+    "age": 35,
+    "longitude": -123.073729276657,
+    "latitude": 49.2587026369794,
+    "Injury Type": 1
+  },
+  {
+    "": 171,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 30,
+    "longitude": -123.107600212097,
+    "latitude": 49.281064958622,
+    "Injury Type": 1
+  },
+  {
+    "": 172,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 22,
+    "longitude": -123.10468196868901,
+    "latitude": 49.268763654523404,
+    "Injury Type": 1
+  },
+  {
+    "": 173,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Pedestrian",
+    "age": 23,
+    "longitude": -123.121901750565,
+    "latitude": 49.2623891142919,
+    "Injury Type": 1
+  },
+  {
+    "": 174,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 25,
+    "longitude": -123.131903707981,
+    "latitude": 49.277352753687495,
+    "Injury Type": 1
+  },
+  {
+    "": 175,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.069207072258,
+    "latitude": 49.2635513653296,
+    "Injury Type": 1
+  },
+  {
+    "": 176,
+    "i_type": "Fall",
+    "incident_with": "Pedestrian",
+    "age": 33,
+    "longitude": -123.13120901584601,
+    "latitude": 49.277737723112104,
+    "Injury Type": 1
+  },
+  {
+    "": 177,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 53,
+    "longitude": -123.129529953003,
+    "latitude": 49.286339256149304,
+    "Injury Type": 1
+  },
+  {
+    "": 178,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.135543457674,
+    "latitude": 49.293770757374105,
+    "Injury Type": 1
+  },
+  {
+    "": 179,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 55,
+    "longitude": -123.120646476746,
+    "latitude": 49.2776677288948,
+    "Injury Type": 1
+  },
+  {
+    "": 180,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": 26,
+    "longitude": -123.127856254578,
+    "latitude": 49.276176828474206,
+    "Injury Type": 1
+  },
+  {
+    "": 181,
+    "i_type": "Fall",
+    "incident_with": "Roadway",
+    "age": 29,
+    "longitude": -123.13259840011601,
+    "latitude": 49.2108129461504,
+    "Injury Type": 1
+  },
+  {
+    "": 182,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": 27,
+    "longitude": -123.19390296936001,
+    "latitude": 49.2336847343956,
+    "Injury Type": 1
+  },
+  {
+    "": 183,
+    "i_type": "Fall",
+    "incident_with": "Train Tracks",
+    "age": 55,
+    "longitude": -123.13629448413799,
+    "latitude": 49.2705697995451,
+    "Injury Type": 1
+  },
+  {
+    "": 184,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, side",
+    "age": "",
+    "longitude": -123.143289685249,
+    "latitude": 49.263148781472594,
+    "Injury Type": 1
+  },
+  {
+    "": 185,
+    "i_type": "Collision with moving object or vehicle",
+    "incident_with": "Vehicle, angle",
+    "age": "",
+    "longitude": -123.13379198312799,
+    "latitude": 49.292616238358896,
+    "Injury Type": 1
+  }
+]

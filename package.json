@@ -1,0 +1,13 @@
+{
+  "name": "VanquishHackathon",
+  "version": "1.0.0",
+  "description": "Data visualization app for collisions and fatalities",
+  "main": "server.js",
+  "repository": "https://github.com/hdengg/VanquishHackathon.git",
+  "author": "QuinnHou <queiyun.hou@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "path": "^0.12.7"
+  }
+}

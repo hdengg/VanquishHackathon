@@ -69,6 +69,7 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
+
   _loadDatasets(map);
   /*   $.getJSON("/datasets/collisions-1.json"), function( data ) {
       console.log("in get JSON");
@@ -76,7 +77,6 @@ function initAutocomplete() {
       _loadDatasets(map , data);
     } */
 }
-
 function _currentLocation(map) {
   console.log("currentlocation");
   // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
@@ -116,15 +116,8 @@ function _currentLocation(map) {
 }
 
 function _loadDatasets(map) {
-  function _getJSONmarkers() {
-    // load datasets
-    collision1 = $.getJSON('/datasets/collisions-1.json');
-    return collision1;
-  }
-
   // load JSON data
-  // const collisions = _getJSONmarkers();
-  const collisions = $.getJSON('/datasets/collisions-2.json', function(data) {
+  $.getJSON('/datasets/collisions-2.json', function (data) {
     for (collision of data) {
       let marker = new google.maps.Marker({
         map: map,

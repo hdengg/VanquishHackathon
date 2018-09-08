@@ -9,4 +9,16 @@
   "Gender": "F",
   "lat": 49.27127290154269,
   "lon": -123.18256221412054
+},
+{
+  "": 6,
+  "covId": 7,
+  "collisionTimeRange": "21:00-23:59",
+  "collisionDate": "2008-01-02",
+  "modes": "Single Cyl",
+  "injuryType": "Minor",
+  "age": "30-39",
+  "gender": "M",
+  "lat": 49.270817750214874,
+  "lon": -123.11494500174301
 }]

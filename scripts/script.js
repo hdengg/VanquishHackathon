@@ -69,13 +69,12 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
-
-  // load datasets
-  $ .getJSON("./datasets/collisions-1.json"), function( data ) {
-    console.log("in get JSON");
-    
-    _loadDatasets(map , data);
-  }
+  _loadDatasets(map);
+  /*   $.getJSON("/datasets/collisions-1.json"), function( data ) {
+      console.log("in get JSON");
+      
+      _loadDatasets(map , data);
+    } */
 }
 
 function _currentLocation(map) {
@@ -116,50 +115,23 @@ function _currentLocation(map) {
   }
 }
 
-function _loadDatasets(map, data) {
-  console.log("loadDataset");
+function _loadDatasets(map) {
   function _getJSONmarkers() {
-    let dataset =
-    [
-      {
-        "": 5,
-        "covId": 6,
-        "collisionTimeRange": "21:00-23:59",
-        "collisionDate": "2008-01-05",
-        "modes": "Veh-Ped",
-        "injuryType": "Minor",
-        "age": "20-29",
-        "gender": "F",
-        "lat": 49.27127290154269,
-        "lon": -123.18256221412054
-      },
-      {
-        "": 6,
-        "covId": 7,
-        "collisionTimeRange": "21:00-23:59",
-        "collisionDate": "2008-01-02",
-        "modes": "Single Cyl",
-        "injuryType": "Minor",
-        "age": "30-39",
-        "gender": "M",
-        "lat": 49.270817750214874,
-        "lon": -123.11494500174301
-      }
-    ]
-    return dataset;
+    // load datasets
+    collision1 = $.getJSON('/datasets/collisions-1.json');
+    return collision1;
   }
 
   // load JSON data
   // const collisions = _getJSONmarkers();
-
-  // initialize JSON markers
-  for (collision of collisions) {
-    let marker = new google.maps.Marker({
-      map: map,
-      id: collision.covId,
-      position: new google.maps.LatLng(collision.lat, collision.lon)
-    })
-  }
-
+  const collisions = $.getJSON('/datasets/collisions-2.json', function(data) {
+    for (collision of data) {
+      let marker = new google.maps.Marker({
+        map: map,
+        id: collision.covId,
+        position: new google.maps.LatLng(collision.lat, collision.lon)
+      })
+    }
+  });
 
 }

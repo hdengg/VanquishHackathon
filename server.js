@@ -5,7 +5,7 @@ const path    = require("path");
 try {
     // set static directories
     app.use(express.static(__dirname));
-    const port = process.env.PORT || 8000;
+    const port = process.env.PORT || 3000;
     app.get('/', function (req, res) {
         res.sendFile(path.join(__dirname+ '/index.html'));
     });

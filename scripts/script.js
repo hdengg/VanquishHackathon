@@ -162,7 +162,12 @@ function _weightedHeatMap(map, dataset) {
   let heatMapData = [];
   $.getJSON(dataset, function (data) {
     for (coordinate of data) {
-      heatMapData.push(new google.maps.LatLng(coordinate.lat, coordinate.lon));
+      heatMapData.push(
+
+      // new google.maps.LatLng(37.785, -122.435)
+        {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
+        )
+      // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
     }
     let gradient = [
       'rgba(0, 255, 255, 0)',

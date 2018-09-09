@@ -19,6 +19,7 @@ function initAutocomplete() {
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
   // _marketInfoMap(map, '/datasets/hospital_injuries_all.json');
+    _filter();
 }
 
 function _searchBox(map) {
@@ -277,6 +278,23 @@ function _radius(map, searchBoxLatLon, dataset) {
           map: map,
           id: coordinate.covId,
           position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+async function _filter() {
+
+    // specify filter here... retrieve it from somewhere
+    let filter = {
+        age: "20-29",
+        gender: "M"
+    };
+
+    let data = await fetchAsync();
+    return filter_arr(data, filter);
+
+}
+
+function filter_arr(arr, criteria) {
+    return arr.filter(function(obj) {
+        return Object.keys(criteria).every(function(c) {
+            return obj[c] == criteria[c];
         });
       }
     }
@@ -298,6 +316,12 @@ function _findInObject(myArray, myCriteria) {
     filtered = _findInObject('/datasets/final_version_dataset.json', query);
     console.log("filtered" + filtered);
   });
+}
+
+async function fetchAsync() {
+    let response = await fetch('/datasets/final_version_dataset.json');
+    let data = await response.json();
+    return data;
 }
 
 

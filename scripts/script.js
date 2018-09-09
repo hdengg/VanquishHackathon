@@ -283,10 +283,10 @@ function _radius(map, searchBoxLatLon, dataset) {
     })
 }
 
-let query = {
-    age: searchString1,
-    gender: searchString2
-};
+// let query = {
+//     age: searchString1,
+//     gender: searchString2
+// };
 
 function find_in_object(my_array, my_criteria) {
     return my_array.filter(function (obj) {
@@ -313,10 +313,12 @@ function _response(){
   let age = $("#age").val();
   let gender = $("#gender").val();
   let transportation = $("#transportation").val();
+  let time = $("#time").val();
   let response = {
     age: age,
     gender: gender,
-    transportation: transportation
+    transportation: transportation,
+    time: time
   }
   return response;
 }

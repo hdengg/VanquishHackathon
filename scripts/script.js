@@ -438,7 +438,7 @@ function _response() {
   let response = {
     age: age,
     gender: gender,
-    transportation: transportation,
+    modes: transportation,
     time: time,
     // mapType: mapType
   }

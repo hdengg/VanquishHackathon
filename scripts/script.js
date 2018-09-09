@@ -72,7 +72,8 @@ function initAutocomplete() {
 
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
-  _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
+  // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
+  _cluster(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
 function _currentLocation(map) {
   // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
@@ -194,4 +195,29 @@ function _weightedHeatMap(map, dataset) {
     });
     heatmap.setMap(map);
   })
+}
+
+  function _cluster(map, dataset) {
+    // Create an array of alphabetical characters used to label the markers.
+      //var labels = [];
+      var locations = [];
+      // let realLocations;
+       $.getJSON(dataset, function (data) { 
+          for(incident of data){
+            locations.push({lat: incident.lat, lng: incident.lon});
+          }
+
+           // The map() method here has nothing to do with the Google Maps API.
+          var markers = locations.map(function(location, i) {
+            return new google.maps.Marker({
+              position: location,
+              //label: labels[i % labels.length]
+            });
+          });
+          
+          // Add a marker clusterer to manage the markers.
+          var markerCluster = new MarkerClusterer(map, markers,
+              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+       });
 }

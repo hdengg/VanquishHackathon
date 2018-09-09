@@ -283,11 +283,13 @@ function _radius(map, searchBoxLatLon, dataset) {
     })
 }
 
-let query = {
-    age: searchString1,
-    gender: searchString2
-};
+// let query = {
+//     age: searchString1,
+//     gender: searchString2
+// };
 
+let query = _response();
+let json = '/datasets/final_version_dataset.json';
 
 find_in_object(json, query);
 
@@ -316,10 +318,12 @@ function _response(){
   let age = $("#age").val();
   let gender = $("#gender").val();
   let transportation = $("#transportation").val();
+  let time = $("#time").val();
   let response = {
     age: age,
     gender: gender,
-    transportation: transportation
+    transportation: transportation,
+    time: time
   }
   return response;
 }

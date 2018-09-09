@@ -240,7 +240,6 @@ function _radius(map, dataset) {
         for (coordinate of data) {
 
             let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({lat: coordinate.lat, lng: coordinate.lon}), circle.center);
-            console.log(distance);
             if (distance < circle.radius) {
                 let marker = new google.maps.Marker({
                     map: map,

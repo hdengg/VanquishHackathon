@@ -1,25 +1,26 @@
 
+var map;
+
 function initAutocomplete() {
   // object for current position
   // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
   // drawing initial map
-  let map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 49.2606, lng: 123.2460 },
-    zoom: 13,
+    zoom: 12,
     mapTypeId: 'roadmap'
   });
 
   var trafficLayer = new google.maps.TrafficLayer();
   trafficLayer.setMap(map);
 
-  // _currentLocation(map);
+  _currentLocation(map);
   _searchBox(map);
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
   // _marketInfoMap(map, '/datasets/hospital_injuries_all.json');
-    _filter();
 }
 
 function _searchBox(map) {
@@ -104,7 +105,7 @@ function _currentLocation(map) {
       };
 
       // set a marker 
-      let currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
+      // let currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
 
       /*
       // set an info window
@@ -144,6 +145,20 @@ function _markerMap(map, dataset) {
     }
   });
 }
+
+// deprecated method
+
+// function _markerMapFilter(dataset) {
+//     // load JSON data
+//     for (collision of dataset) {
+//         console.log(collision);
+//         let marker = new google.maps.Marker({
+//             map: map,
+//             id: collision.covId,
+//             position: new google.maps.LatLng(collision.lat, collision.lon)
+//         })
+//     }
+// }
 
 function _marketInfoMap(map, dataset) {
   // load JSON data
@@ -224,6 +239,41 @@ function _heatMap(map, dataset) {
   })
 }
 
+function _heatMapFilter(dataset) {
+    let heatMapData = [];
+    for (coordinate of dataset) {
+        heatMapData.push(
+            // new google.maps.LatLng(37.785, -122.435)
+            {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
+        )
+        // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
+    }
+    let gradient = [
+        'rgba(0, 255, 255, 0)',
+        'rgba(0, 255, 255, 1)',
+        'rgba(0, 191, 255, 1)',
+        'rgba(0, 127, 255, 1)',
+        'rgba(0, 63, 255, 1)',
+        'rgba(0, 0, 255, 1)',
+        'rgba(0, 0, 223, 1)',
+        'rgba(0, 0, 191, 1)',
+        'rgba(0, 0, 159, 1)',
+        'rgba(0, 0, 127, 1)',
+        'rgba(63, 0, 91, 1)',
+        'rgba(127, 0, 63, 1)',
+        'rgba(191, 0, 31, 1)',
+        'rgba(255, 0, 0, 1)'
+    ];
+
+    let heatmap = new google.maps.visualization.HeatmapLayer({
+        data: heatMapData,
+        radius: 28,
+        opacity: .5,
+        gradient: gradient
+    });
+    heatmap.setMap(map);
+}
+
   function _cluster(map, dataset) {
     // Create an array of alphabetical characters used to label the markers.
       //var labels = [];
@@ -247,6 +297,29 @@ function _heatMap(map, dataset) {
               {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
        });
+}
+
+function _cluster_filter (dataset) {
+    // Create an array of alphabetical characters used to label the markers.
+    //var labels = [];
+    var locations = [];
+    // let realLocations;
+        for(collision of dataset){
+            locations.push({lat: collision.lat, lng: collision.lon});
+        }
+
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+            return new google.maps.Marker({
+                position: location,
+                //label: labels[i % labels.length]
+            });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
 }
 
 function _radius(map, searchBoxLatLon, dataset) {
@@ -284,17 +357,10 @@ function _radius(map, searchBoxLatLon, dataset) {
     })
 }
 
-async function _filter() {
-
-    // specify filter here... retrieve it from somewhere
-    let filter = {
-        age: "20-29",
-        gender: "M",
-
-    };
+async function _filter(query) {
 
     let data = await fetchAsync();
-    let response = filter_arr(data, filter);
+    let response = filter_arr(data, query);
     return response;
 
 }
@@ -321,6 +387,12 @@ function submit(){
   $("#map").show();
   $("#introForm").hide();
   $("#animation").hide();
+  let query = _response();
+  let response = _filter(query);
+  response.then(function(result) {
+      _heatMapFilter(result);
+    });
+
 }
 
 function _response(){
@@ -331,8 +403,8 @@ function _response(){
   let response = {
     age: age,
     gender: gender,
-    transportation: transportation,
+    modes: transportation,
     time: time
-  }
+  };
   return response;
 }

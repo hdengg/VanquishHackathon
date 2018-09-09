@@ -280,4 +280,24 @@ function _radius(map, searchBoxLatLon, dataset) {
     })
 }
 
+let query = {
+    age: searchString1,
+    gender: searchString2
+};
+
+//
+
+find_in_object(json, query);
+
+function find_in_object(my_array, my_criteria) {
+    return my_array.filter(function (obj) {
+        return Object.keys(my_criteria).every(function (key) {
+            return (Array.isArray(my_criteria[key]) &&
+                (my_criteria[key].some(function (criteria) {
+                    return (typeof obj[key] === 'string' && obj[key].indexOf(criteria) === -1)
+                })) || my_criteria[key].length === 0);
+        });
+    });
+}
+
 

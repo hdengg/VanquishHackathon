@@ -1,3 +1,4 @@
+
 function initAutocomplete() {
   // object for current position
   // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -79,7 +80,6 @@ function _searchBox(map) {
     });
     map.fitBounds(bounds);
   });
-
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
@@ -202,7 +202,7 @@ function _heatMap(map, dataset) {
       'rgba(127, 0, 63, 1)',
       'rgba(191, 0, 31, 1)',
       'rgba(255, 0, 0, 1)'
-    ]
+    ];
 
     let heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatMapData,

@@ -6,8 +6,6 @@
   <meta charset="utf-8">
   <title>Covision</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/main1.css">
 </head>
@@ -17,17 +15,29 @@
   <div style="margin-top: 10px;">
     <div class="parent">
       <form class="container" id="introForm">
-      <img id="header" src="images/header.png"/>
+        <img id="header" src="images/header.png" />
         <div class="form-group wrap-input100">
           <div class="form-group wrap-input100">
-            <input id="pac-input" class="select-text input100 form-control select-wrapper controls" type="text" placeholder="Your destination">
+            <input id="pac-input" class="select-text input100 form-control select-wrapper controls" type="text"
+              placeholder="Your destination">
+              <div class="btn-group btn-group-toggle" id="typeOfMaps" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> Markers
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Cluster
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> Heatmap
+                  </label>
+                </div>
             <span class="focus-input100"></span>
           </div>
-          
+
           <select class="select-text form-control select-wrapper" id="transportation">
             <option value="--Select--">Your mode of transportation</option>
-            <option value="Walking">0</option>
-            <option value="Cycling">1</option>
+            <option value="0">Walking</option>
+            <option value="1">Cycling</option>
           </select>
         </div>
 
@@ -46,20 +56,22 @@
         </div>
 
         <div class="form-group wrap-input100">
-            <select class="select-text form-control select-wrapper" id="age">
-              <option value="--Select--">Your time of travel</option>
-              <option value="am">day</option>
-              <option value="pm">pm</option>
-            </select>
-          </div>
+          <select class="select-text form-control select-wrapper" id="age">
+            <option value="--Select--">Your time of travel</option>
+            <option value="Day">Day time</option>
+            <option value="Night">Night time</option>
+          </select>
+        </div>
 
         <div class="form-group wrap-input100">
           <select class="select-text form-control select-wrapper" id="gender">
             <option value="--Select--">Your gender</option>
-            <option value="M">M</option>
-            <option value="F">F</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
           </select>
         </div>
+
+       
 
         <div class="">
           <div class="button" onclick="submit()">
@@ -95,10 +107,16 @@
   </div>
 
   <!-- <div id="map"></div> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyDyZzpxL62X2kzoj-2exCx3_c89VQtzxK0&libraries=places,visualization&callback=initAutocomplete"
     async defer></script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+
+
+
   </script>
   <script src="scripts/script.js"></script>
 </body>

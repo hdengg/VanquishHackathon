@@ -85,3 +85,7 @@ html, body {
 #target {
   width: 345px;
 }
+
+#typeOfMaps{
+  /* display: none; */
+}

@@ -288,9 +288,6 @@ let query = {
     gender: searchString2
 };
 
-
-find_in_object(json, query);
-
 function find_in_object(my_array, my_criteria) {
     return my_array.filter(function (obj) {
         return Object.keys(my_criteria).every(function (key) {

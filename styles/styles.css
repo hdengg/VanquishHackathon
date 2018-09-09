@@ -32,7 +32,7 @@ html, body {
 }
 
 .pac-card {
-  margin: 10px 10px 0 0;
+  margin: 10px 10px 10px 10px;
   border-radius: 2px 0 0 2px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -86,6 +86,10 @@ html, body {
   width: 345px;
 }
 
-#typeOfMaps{
+.bottom-left{
+  position: fixed;
   /* display: none; */
+  /* padding: 10px; */
+  left: 30;
+  bottom: 0;
 }

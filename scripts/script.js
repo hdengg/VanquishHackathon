@@ -4,9 +4,8 @@ var map;
 function initAutocomplete() {
   // object for current position
   // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
   // drawing initial map
-    map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 49.2606, lng: 123.2460 },
     zoom: 12,
     mapTypeId: 'roadmap'
@@ -76,8 +75,8 @@ function _searchBox(map) {
       }));
 
       if (place.geometry.location) {
-          searchBoxLatLon = place.geometry.location;
-          _radius(map, searchBoxLatLon, '/datasets/final_version_dataset.json');
+        searchBoxLatLon = place.geometry.location;
+        _radius(map, searchBoxLatLon, '/datasets/final_version_dataset.json');
       }
 
       if (place.geometry.viewport) {
@@ -107,14 +106,14 @@ function _currentLocation(map) {
       // set a marker 
       // let currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
 
-      
+
       // set an info window
       infoWindow = new google.maps.InfoWindow;
 
       //infoWindow.setPosition(pos);
       //infoWindow.setContent('Current Location');
       //infoWindow.open(map);
-      
+
 
       map.setCenter(pos);
     }, function () {
@@ -207,9 +206,9 @@ function _heatMap(map, dataset) {
     for (coordinate of data) {
       heatMapData.push(
 
-      // new google.maps.LatLng(37.785, -122.435)
-        {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
-        )
+        // new google.maps.LatLng(37.785, -122.435)
+        { location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType }
+      )
       // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
     }
     let gradient = [
@@ -239,148 +238,172 @@ function _heatMap(map, dataset) {
   })
 }
 
-function _heatMapFilter(dataset) {
-    let heatMapData = [];
-    for (coordinate of dataset) {
-        heatMapData.push(
-            // new google.maps.LatLng(37.785, -122.435)
-            {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
-        )
-        // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
+function _cluster(map, dataset) {
+  // Create an array of alphabetical characters used to label the markers.
+  //var labels = [];
+  var locations = [];
+  // let realLocations;
+  $.getJSON(dataset, function (data) {
+    for (incident of data) {
+      locations.push({ lat: incident.lat, lng: incident.lon });
     }
-    let gradient = [
-        'rgba(0, 255, 255, 0)',
-        'rgba(0, 255, 255, 1)',
-        'rgba(0, 191, 255, 1)',
-        'rgba(0, 127, 255, 1)',
-        'rgba(0, 63, 255, 1)',
-        'rgba(0, 0, 255, 1)',
-        'rgba(0, 0, 223, 1)',
-        'rgba(0, 0, 191, 1)',
-        'rgba(0, 0, 159, 1)',
-        'rgba(0, 0, 127, 1)',
-        'rgba(63, 0, 91, 1)',
-        'rgba(127, 0, 63, 1)',
-        'rgba(191, 0, 31, 1)',
-        'rgba(255, 0, 0, 1)'
-    ];
 
-    let heatmap = new google.maps.visualization.HeatmapLayer({
-        data: heatMapData,
-        radius: 28,
-        opacity: .5,
-        gradient: gradient
+    // The map() method here has nothing to do with the Google Maps API.
+    var markers = locations.map(function (location, i) {
+      return new google.maps.Marker({
+        position: location,
+        //label: labels[i % labels.length]
+      });
     });
-    heatmap.setMap(map);
+
+    // Add a marker clusterer to manage the markers.
+    var markerCluster = new MarkerClusterer(map, markers,
+      { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+  });
+}
+function _heatMapFilter(dataset) {
+  let heatMapData = [];
+  for (coordinate of dataset) {
+    heatMapData.push(
+      // new google.maps.LatLng(37.785, -122.435)
+      { location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType }
+    )
+    // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
+  }
+  let gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(63, 0, 91, 1)',
+    'rgba(127, 0, 63, 1)',
+    'rgba(191, 0, 31, 1)',
+    'rgba(255, 0, 0, 1)'
+  ];
+
+  let heatmap = new google.maps.visualization.HeatmapLayer({
+    data: heatMapData,
+    radius: 28,
+    opacity: .5,
+    gradient: gradient
+  });
+  heatmap.setMap(map);
 }
 
-  function _cluster(map, dataset) {
-    // Create an array of alphabetical characters used to label the markers.
-      //var labels = [];
-      var locations = [];
-      // let realLocations;
-       $.getJSON(dataset, function (data) {
-          for(incident of data){
-            locations.push({lat: incident.lat, lng: incident.lon});
-          }
+function _cluster(map, dataset) {
+  // Create an array of alphabetical characters used to label the markers.
+  //var labels = [];
+  var locations = [];
+  // let realLocations;
+  $.getJSON(dataset, function (data) {
+    for (incident of data) {
+      locations.push({ lat: incident.lat, lng: incident.lon });
+    }
 
-           // The map() method here has nothing to do with the Google Maps API.
-          var markers = locations.map(function(location, i) {
-            return new google.maps.Marker({
-              position: location,
-              //label: labels[i % labels.length]
-            });
-          });
+    // The map() method here has nothing to do with the Google Maps API.
+    var markers = locations.map(function (location, i) {
+      return new google.maps.Marker({
+        position: location,
+        //label: labels[i % labels.length]
+      });
+    });
 
-           // Add a marker clusterer to manage the markers.
-          var markerCluster = new MarkerClusterer(map, markers,
-              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    // Add a marker clusterer to manage the markers.
+    var markerCluster = new MarkerClusterer(map, markers,
+      { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
-       });
+  });
 }
 
-function _cluster_filter (dataset) {
-    // Create an array of alphabetical characters used to label the markers.
-    //var labels = [];
-    var locations = [];
-    // let realLocations;
-        for(collision of dataset){
-            locations.push({lat: collision.lat, lng: collision.lon});
-        }
+function _cluster_filter(dataset) {
+  // Create an array of alphabetical characters used to label the markers.
+  //var labels = [];
+  var locations = [];
+  // let realLocations;
+  for (collision of dataset) {
+    locations.push({ lat: collision.lat, lng: collision.lon });
+  }
 
-        // The map() method here has nothing to do with the Google Maps API.
-        var markers = locations.map(function(location, i) {
-            return new google.maps.Marker({
-                position: location,
-                //label: labels[i % labels.length]
-            });
-        });
+  // The map() method here has nothing to do with the Google Maps API.
+  var markers = locations.map(function (location, i) {
+    return new google.maps.Marker({
+      position: location,
+      //label: labels[i % labels.length]
+    });
+  });
 
-        // Add a marker clusterer to manage the markers.
-        var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  // Add a marker clusterer to manage the markers.
+  var markerCluster = new MarkerClusterer(map, markers,
+    { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
 }
 
 function _radius(map, searchBoxLatLon, dataset) {
-    let search_area = [];
+  let search_area = [];
 
-    console.log(searchBoxLatLon);
-    // We create a circle to look within:
-    if (searchBoxLatLon.length !== 0) {
-        search_area = {
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            center: searchBoxLatLon,
-            radius: 300
-        };
-    } else {
-        return;
-    }
+  console.log(searchBoxLatLon);
+  // We create a circle to look within:
+  if (searchBoxLatLon.length !== 0) {
+    search_area = {
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      center: searchBoxLatLon,
+      radius: 300
+    };
+  } else {
+    return;
+  }
 
-    let circle = new google.maps.Circle(search_area);
-    map.setCenter(searchBoxLatLon);
+  let circle = new google.maps.Circle(search_area);
+  map.setCenter(searchBoxLatLon);
 
-    $.getJSON(dataset, function (data) {
-        for (coordinate of data) {
+  $.getJSON(dataset, function (data) {
+    for (coordinate of data) {
 
-            let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({lat: coordinate.lat, lng: coordinate.lon}), circle.center);
-            if (distance < circle.radius) {
-                let marker = new google.maps.Marker({
-                    map: map,
-                    id: coordinate.covId,
-                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon),
+      let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({ lat: coordinate.lat, lng: coordinate.lon }), circle.center);
+      if (distance < circle.radius) {
+        let marker = new google.maps.Marker({
+          map: map,
+          id: coordinate.covId,
+          position: new google.maps.LatLng(coordinate.lat, coordinate.lon),
 
 
-                });
-
-                let contentString = "injury type: " + coordinate.injury + ";  age: " + coordinate.age;
-                var infowindow = new google.maps.InfoWindow({
-                      content: contentString
         });
-                 marker.addListener('click', function() {
+
+        let contentString = "injury type: " + coordinate.injury + ";  age: " + coordinate.age;
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        marker.addListener('click', function () {
           infowindow.open(map, marker);
         });
-            }
-        }
-    })
+      }
+    }
+  })
 }
 
 async function _filter(query) {
 
-    let data = await fetchAsync();
-    let response = filter_arr(data, query);
-    return response;
+  let data = await fetchAsync();
+  let response = filter_arr(data, query);
+  return response;
 
 }
 
 function filter_arr(arr, criteria) {
-    return arr.filter(function(obj) {
-        return Object.keys(criteria).every(function(c) {
-            return obj[c] == criteria[c];
-        });
+  return arr.filter(function (obj) {
+    return Object.keys(criteria).every(function (c) {
+      return obj[c] == criteria[c];
     });
+  });
 }
 
 async function fetchAsync() {
@@ -392,30 +415,55 @@ async function fetchAsync() {
 
 // Form functions ===================================================
 
-function submit(){
+function submit() {
   document.body.classList.add('active')
   $("#map").show();
   $("#introForm").hide();
   $("#animation").hide();
   let query = _response();
   let response = _filter(query);
-  response.then(function(result) {
-      console.log(result);
-      _heatMapFilter(result);
-    });
+  response.then(function (result) {
+    console.log("result" + result);
+    _heatMapFilter(result);
+  });
 
 }
 
-function _response(){
+function _response() {
   let age = $("#age").val();
   let gender = $("#gender").val();
   let transportation = $("#transportation").val();
   let time = $("#time").val();
+  let mapType = $("input[type=radio][name=mapType]:checked").val();
   let response = {
     age: age,
     gender: gender,
     modes: transportation,
-    time: time
-  };
+    time: time,
+    // mapType: mapType
+  }
+  // console.log("response:" + response.mapType);
   return response;
 }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   let radio =  $("input[type=radio][name=mapType]:checked");
+//   checkRadioValue(radio);
+//   $("input[type=radio][name=mapType]:checked").change(function () {
+//     debugger;
+//     checkRadioValue(radio);
+//   })
+// });
+
+// function checkRadioValue(radio) {
+//   if (radio.val() === 'marker') {
+//     console.log("marker");
+
+//   }
+//   if (radio.val() === 'cluster') {
+//     console.log("cluster");
+//   }
+//   if (radio.val() === 'heat') {
+//     console.log("heat");
+//   }
+// }

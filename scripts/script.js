@@ -75,8 +75,8 @@ function _searchBox(map) {
       }));
 
       if (place.geometry.location) {
-        searchBoxLatLon = place.geometry.location;
-        _radius(map, searchBoxLatLon, '/datasets/detailed_pedestrian_cyclist.json');
+          searchBoxLatLon = place.geometry.location;
+          _radius(map, searchBoxLatLon, '/datasets/detailed_pedestrian_cyclist.json');
       }
 
       if (place.geometry.viewport) {
@@ -192,9 +192,9 @@ function _heatMap(map, dataset) {
     for (coordinate of data) {
       heatMapData.push(
 
-        // new google.maps.LatLng(37.785, -122.435)
-        { location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType }
-      )
+      // new google.maps.LatLng(37.785, -122.435)
+        {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
+        )
       // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
     }
     let gradient = [
@@ -224,68 +224,72 @@ function _heatMap(map, dataset) {
   })
 }
 
-function _cluster(map, dataset) {
-  // Create an array of alphabetical characters used to label the markers.
-  //var labels = [];
-  var locations = [];
-  // let realLocations;
-  $.getJSON(dataset, function (data) {
-    for (incident of data) {
-      locations.push({ lat: incident.lat, lng: incident.lon });
-    }
+  function _cluster(map, dataset) {
+    // Create an array of alphabetical characters used to label the markers.
+      //var labels = [];
+      var locations = [];
+      // let realLocations;
+       $.getJSON(dataset, function (data) {
+          for(incident of data){
+            locations.push({lat: incident.lat, lng: incident.lon});
+          }
 
-    // The map() method here has nothing to do with the Google Maps API.
-    var markers = locations.map(function (location, i) {
-      return new google.maps.Marker({
-        position: location,
-        //label: labels[i % labels.length]
-      });
-    });
+           // The map() method here has nothing to do with the Google Maps API.
+          var markers = locations.map(function(location, i) {
+            return new google.maps.Marker({
+              position: location,
+              //label: labels[i % labels.length]
+            });
+          });
 
-    // Add a marker clusterer to manage the markers.
-    var markerCluster = new MarkerClusterer(map, markers,
-      { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+           // Add a marker clusterer to manage the markers.
+          var markerCluster = new MarkerClusterer(map, markers,
+              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
-  });
+       });
 }
 
 function _radius(map, searchBoxLatLon, dataset) {
-  let search_area = [];
+    let search_area = [];
 
-  console.log(searchBoxLatLon);
-  // We create a circle to look within:
-  if (searchBoxLatLon.length !== 0) {
-    search_area = {
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      center: searchBoxLatLon,
-      radius: 300
-    };
-  } else {
-    return;
-  }
+    console.log(searchBoxLatLon);
+    // We create a circle to look within:
+    if (searchBoxLatLon.length !== 0) {
+        search_area = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            center: searchBoxLatLon,
+            radius: 300
+        };
+    } else {
+        return;
+    }
 
-  let circle = new google.maps.Circle(search_area);
-  map.setCenter(searchBoxLatLon);
+    let circle = new google.maps.Circle(search_area);
+    map.setCenter(searchBoxLatLon);
 
-  $.getJSON(dataset, function (data) {
-    for (coordinate of data) {
+    $.getJSON(dataset, function (data) {
+        for (coordinate of data) {
 
-      let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({ lat: coordinate.lat, lng: coordinate.lon }), circle.center);
-      if (distance < circle.radius) {
-        let marker = new google.maps.Marker({
-          map: map,
-          id: coordinate.covId,
-          position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+            let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({lat: coordinate.lat, lng: coordinate.lon}), circle.center);
+            if (distance < circle.radius) {
+                let marker = new google.maps.Marker({
+                    map: map,
+                    id: coordinate.covId,
+                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+                });
+            }
+        }
+    })
+}
+
 async function _filter() {
 
     // specify filter here... retrieve it from somewhere
     let filter = {
         age: "20-29",
         gender: "M",
-        modes: "1",
-        time: "Day"
 
     };
 
@@ -300,26 +304,7 @@ function filter_arr(arr, criteria) {
         return Object.keys(criteria).every(function(c) {
             return obj[c] == criteria[c];
         });
-      }
-    }
-  })
-}
-let query = _response();
-let filtered; 
-
-function _findInObject(myArray, myCriteria) {
-  $.getJSON(myArray, function (data) {
-    return data.filter(function (obj) {
-      return Object.keys(myCriteria).every(function (key) {
-        return (Array.isArray(myCriteria[key]) &&
-          (myCriteria[key].some(function (criteria) {
-            return (typeof obj[key] === 'string' && obj[key].indexOf(criteria) === -1)
-          })) || myCriteria[key].length === 0);
-      });
     });
-    filtered = _findInObject('/datasets/final_version_dataset.json', query);
-    console.log("filtered" + filtered);
-  });
 }
 
 async function fetchAsync() {
@@ -331,15 +316,14 @@ async function fetchAsync() {
 
 // Form functions ===================================================
 
-function submit() {
+function submit(){
   document.body.classList.add('active')
   $("#map").show();
   $("#introForm").hide();
   $("#animation").hide();
-  $("#typeOfMaps").show();
 }
 
-function _response() {
+function _response(){
   let age = $("#age").val();
   let gender = $("#gender").val();
   let transportation = $("#transportation").val();
@@ -347,7 +331,7 @@ function _response() {
   let response = {
     age: age,
     gender: gender,
-    modes: transportation,
+    transportation: transportation,
     time: time
   }
   return response;

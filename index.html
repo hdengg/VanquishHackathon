@@ -15,57 +15,60 @@
 <body>
   <div id="map"></div>
   <div style="margin-top: 10px;">
-    <form class="container" id="introForm">
-      <div class="form-group wrap-input100">
-        <select class="select-text form-control select-wrapper" id="transportation">
-          <option value="--Select--">-- Mode of Transportation --</option>
-          <option value="Walking">0</option>
-          <option value="Cycling">1</option>
-        </select>
-      </div>
+    <div class="parent">
+      <form class="container" id="introForm">
+      <img id="header" src="images/header.png"/>
+        <div class="form-group wrap-input100">
+          <div class="form-group wrap-input100">
+            <input id="pac-input" class="select-text input100 form-control select-wrapper controls" type="text" placeholder="Your destination">
+            <span class="focus-input100"></span>
+          </div>
+          
+          <select class="select-text form-control select-wrapper" id="transportation">
+            <option value="--Select--">Your mode of transportation</option>
+            <option value="Walking">Walking</option>
+            <option value="Cycling">Cycling</option>
+          </select>
+        </div>
 
-      <div class="form-group wrap-input100">
-        <select class="select-text form-control select-wrapper" id="age">
-          <option value="--Select--">-- Age --</option>
-          <option value="0-10">0-10</option>
-          <option value="10-19">10-19</option>
-          <option value="20-29">20-29</option>
-          <option value="30-39">30-39</option>
-          <option value="40-49">40-49</option>
-          <option value="50-59">50-59</option>
-          <option value="60-69">60-69</option>
-          <option value="70+">70+</option>
-        </select>
-      </div>
+        <div class="form-group wrap-input100">
+          <select class="select-text form-control select-wrapper" id="age">
+            <option value="--Select--">Your age</option>
+            <option value="0-10">0-10</option>
+            <option value="10-19">10-19</option>
+            <option value="20-29">20-29</option>
+            <option value="30-39">30-39</option>
+            <option value="40-49">40-49</option>
+            <option value="50-59">50-59</option>
+            <option value="60-69">60-69</option>
+            <option value="70+">70+</option>
+          </select>
+        </div>
 
-      <div class="form-group wrap-input100">
-        <select class="select-text form-control select-wrapper" id="gender">
-          <option value="--Select--">-- Gender --</option>
-          <option value="M">M</option>
-          <option value="F">F</option>
-        </select>
-      </div>
+        <div class="form-group wrap-input100">
+          <select class="select-text form-control select-wrapper" id="gender">
+            <option value="--Select--">Your gender</option>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
+        </div>
 
-      <div class="form-group wrap-input100">
-        <input id="pac-input" class="select-text input100 form-control select-wrapper controls" type="text" placeholder="Destination">
-        <span class="focus-input100"></span>
-      </div>
+        <div class="">
+          <div class="button" onclick="submit()">
 
-      <div class="">
-        <div class="button" onclick="submit()">
+            <span class="button-text">Go!</span>
 
-          <span class="button-text">Go!</span>
-
-          <div class="button-backgrounds">
-            <div class="button-circle button-circle1"></div>
-            <div class="button-circle button-circle2"></div>
-            <div class="button-circle button-circle3"></div>
-            <div class="button-circle button-circle4"></div>
+            <div class="button-backgrounds">
+              <div class="button-circle button-circle1"></div>
+              <div class="button-circle button-circle2"></div>
+              <div class="button-circle button-circle3"></div>
+              <div class="button-circle button-circle4"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-    </form>
+      </form>
+    </div>
 
     <div class="wrapper" id="animation">
       <div class="popup">
@@ -90,7 +93,6 @@
    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
   </script>
   <script src="scripts/script.js"></script>
-  <script src="scripts/form.js"></script>
 </body>
 
 </html>

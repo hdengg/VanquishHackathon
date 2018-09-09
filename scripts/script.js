@@ -1,3 +1,4 @@
+
 function initAutocomplete() {
   // object for current position
   // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -9,8 +10,18 @@ function initAutocomplete() {
     mapTypeId: 'roadmap'
   });
 
-  _currentLocation(map);
+  var trafficLayer = new google.maps.TrafficLayer();
+  trafficLayer.setMap(map);
 
+  _currentLocation(map);
+  _searchBox(map);
+  // _markerMap(map, '/datasets/collisions-2.json');
+  // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
+  // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
+  // _marketInfoMap(map, '/datasets/hospital_injuries_all.json');
+}
+
+function _searchBox(map) {
   // Create the search box and link it to the UI element.
   let input = document.getElementById('pac-input');
   let searchBox = new google.maps.places.SearchBox(input);
@@ -69,11 +80,12 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
-
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
-  _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
+  // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
+  _radius(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
+
 function _currentLocation(map) {
   // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
   if (navigator.geolocation) {
@@ -124,12 +136,56 @@ function _markerMap(map, dataset) {
   });
 }
 
+function _marketInfoMap(map, dataset) {
+  // load JSON data
+  $.getJSON(dataset, function (data) {
+    for (collision of data) {
+      let pos = {
+        lat: collision.lat,
+        lng: collision.lon
+      };
+      let marker = new google.maps.Marker({
+        map: map,
+        id: collision.covId,
+        position: new google.maps.LatLng(collision.lat, collision.lon)
+      })
+
+      // set an info window
+      let content = `incident modes: ${collision.modes}. age: ${collision.age}`
+      infoWindow = new google.maps.InfoWindow;
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(content);
+      infoWindow.open(map);
+    }
+  });
+}
+
+function _createCircle(map, center) {
+  // let center = {lat: 37.090, lng: -95.712};
+  var cityCircle = new google.maps.Circle({
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    map: map,
+    center: center,
+    radius: 1000
+  });
+}
+
 // https://developers.google.com/maps/documentation/javascript/heatmaplayer
 function _heatMap(map, dataset) {
   let heatMapData = [];
   $.getJSON(dataset, function (data) {
     for (coordinate of data) {
-      heatMapData.push(new google.maps.LatLng(coordinate.lat, coordinate.lon));
+      heatMapData.push(
+
+      // new google.maps.LatLng(37.785, -122.435)
+        {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
+        )
+      // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
     }
     let gradient = [
       'rgba(0, 255, 255, 0)',
@@ -146,7 +202,7 @@ function _heatMap(map, dataset) {
       'rgba(127, 0, 63, 1)',
       'rgba(191, 0, 31, 1)',
       'rgba(255, 0, 0, 1)'
-    ]
+    ];
 
     let heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatMapData,
@@ -158,35 +214,58 @@ function _heatMap(map, dataset) {
   })
 }
 
-function _weightedHeatMap(map, dataset) {
-  let heatMapData = [];
-  $.getJSON(dataset, function (data) {
-    for (coordinate of data) {
-      heatMapData.push(new google.maps.LatLng(coordinate.lat, coordinate.lon));
-    }
-    let gradient = [
-      'rgba(0, 255, 255, 0)',
-      'rgba(0, 255, 255, 1)',
-      'rgba(0, 191, 255, 1)',
-      'rgba(0, 127, 255, 1)',
-      'rgba(0, 63, 255, 1)',
-      'rgba(0, 0, 255, 1)',
-      'rgba(0, 0, 223, 1)',
-      'rgba(0, 0, 191, 1)',
-      'rgba(0, 0, 159, 1)',
-      'rgba(0, 0, 127, 1)',
-      'rgba(63, 0, 91, 1)',
-      'rgba(127, 0, 63, 1)',
-      'rgba(191, 0, 31, 1)',
-      'rgba(255, 0, 0, 1)'
-    ]
+  function _cluster(map, dataset) {
+    // Create an array of alphabetical characters used to label the markers.
+      //var labels = [];
+      var locations = [];
+      // let realLocations;
+       $.getJSON(dataset, function (data) {
+          for(incident of data){
+            locations.push({lat: incident.lat, lng: incident.lon});
+          }
 
-    let heatmap = new google.maps.visualization.HeatmapLayer({
-      data: heatMapData,
-      radius: 28,
-      opacity: .5,
-      gradient: gradient
-    });
-    heatmap.setMap(map);
-  })
+           // The map() method here has nothing to do with the Google Maps API.
+          var markers = locations.map(function(location, i) {
+            return new google.maps.Marker({
+              position: location,
+              //label: labels[i % labels.length]
+            });
+          });
+
+           // Add a marker clusterer to manage the markers.
+          var markerCluster = new MarkerClusterer(map, markers,
+              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+       });
 }
+
+function _radius(map, dataset) {
+    let search_area = [];
+
+    // We create a circle to look within:
+    search_area = {
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        center: new google.maps.LatLng({lat: 49.24741348, lng: -123.1391502}),
+        radius: 500
+    };
+
+    let circle = new google.maps.Circle(search_area);
+
+    $.getJSON(dataset, function (data) {
+        for (coordinate of data) {
+
+            let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({lat: coordinate.lat, lng: coordinate.lon}), circle.center);
+            if (distance < circle.radius) {
+                let marker = new google.maps.Marker({
+                    map: map,
+                    id: coordinate.covId,
+                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+                });
+            }
+        }
+    })
+}
+
+

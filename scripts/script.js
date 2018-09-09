@@ -2,7 +2,6 @@
 function initAutocomplete() {
   // object for current position
   // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
   // drawing initial map
   let map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 49.2606, lng: 123.2460 },
@@ -19,7 +18,7 @@ function initAutocomplete() {
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
   // _marketInfoMap(map, '/datasets/hospital_injuries_all.json');
-    _filter();
+  _filter();
 }
 
 function _searchBox(map) {
@@ -75,8 +74,8 @@ function _searchBox(map) {
       }));
 
       if (place.geometry.location) {
-          searchBoxLatLon = place.geometry.location;
-          _radius(map, searchBoxLatLon, '/datasets/detailed_pedestrian_cyclist.json');
+        searchBoxLatLon = place.geometry.location;
+        _radius(map, searchBoxLatLon, '/datasets/detailed_pedestrian_cyclist.json');
       }
 
       if (place.geometry.viewport) {
@@ -192,9 +191,9 @@ function _heatMap(map, dataset) {
     for (coordinate of data) {
       heatMapData.push(
 
-      // new google.maps.LatLng(37.785, -122.435)
-        {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
-        )
+        // new google.maps.LatLng(37.785, -122.435)
+        { location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType }
+      )
       // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
     }
     let gradient = [
@@ -224,115 +223,141 @@ function _heatMap(map, dataset) {
   })
 }
 
-  function _cluster(map, dataset) {
-    // Create an array of alphabetical characters used to label the markers.
-      //var labels = [];
-      var locations = [];
-      // let realLocations;
-       $.getJSON(dataset, function (data) {
-          for(incident of data){
-            locations.push({lat: incident.lat, lng: incident.lon});
-          }
+function _cluster(map, dataset) {
+  // Create an array of alphabetical characters used to label the markers.
+  //var labels = [];
+  var locations = [];
+  // let realLocations;
+  $.getJSON(dataset, function (data) {
+    for (incident of data) {
+      locations.push({ lat: incident.lat, lng: incident.lon });
+    }
 
-           // The map() method here has nothing to do with the Google Maps API.
-          var markers = locations.map(function(location, i) {
-            return new google.maps.Marker({
-              position: location,
-              //label: labels[i % labels.length]
-            });
-          });
+    // The map() method here has nothing to do with the Google Maps API.
+    var markers = locations.map(function (location, i) {
+      return new google.maps.Marker({
+        position: location,
+        //label: labels[i % labels.length]
+      });
+    });
 
-           // Add a marker clusterer to manage the markers.
-          var markerCluster = new MarkerClusterer(map, markers,
-              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    // Add a marker clusterer to manage the markers.
+    var markerCluster = new MarkerClusterer(map, markers,
+      { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
-       });
+  });
 }
 
 function _radius(map, searchBoxLatLon, dataset) {
-    let search_area = [];
+  let search_area = [];
 
-    console.log(searchBoxLatLon);
-    // We create a circle to look within:
-    if (searchBoxLatLon.length !== 0) {
-        search_area = {
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            center: searchBoxLatLon,
-            radius: 300
-        };
-    } else {
-        return;
+  console.log(searchBoxLatLon);
+  // We create a circle to look within:
+  if (searchBoxLatLon.length !== 0) {
+    search_area = {
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      center: searchBoxLatLon,
+      radius: 300
+    };
+  } else {
+    return;
+  }
+
+  let circle = new google.maps.Circle(search_area);
+  map.setCenter(searchBoxLatLon);
+
+  $.getJSON(dataset, function (data) {
+    for (coordinate of data) {
+
+      let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({ lat: coordinate.lat, lng: coordinate.lon }), circle.center);
+      if (distance < circle.radius) {
+        let marker = new google.maps.Marker({
+          map: map,
+          id: coordinate.covId,
+          position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+        });
+      }
     }
-
-    let circle = new google.maps.Circle(search_area);
-    map.setCenter(searchBoxLatLon);
-
-    $.getJSON(dataset, function (data) {
-        for (coordinate of data) {
-
-            let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({lat: coordinate.lat, lng: coordinate.lon}), circle.center);
-            if (distance < circle.radius) {
-                let marker = new google.maps.Marker({
-                    map: map,
-                    id: coordinate.covId,
-                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
-                });
-            }
-        }
-    })
+  })
 }
 
 async function _filter() {
 
-    // specify filter here... retrieve it from somewhere
-    let filter = {
-        age: "20-29",
-        gender: "M",
+  // specify filter here... retrieve it from somewhere
+  let filter = {
+    age: "20-29",
+    gender: "M",
 
-    };
+  };
 
-    let data = await fetchAsync();
-    let response = filter_arr(data, filter);
-    return response;
+  let data = await fetchAsync();
+  let response = filter_arr(data, filter);
+  return response;
 
 }
 
 function filter_arr(arr, criteria) {
-    return arr.filter(function(obj) {
-        return Object.keys(criteria).every(function(c) {
-            return obj[c] == criteria[c];
-        });
+  return arr.filter(function (obj) {
+    return Object.keys(criteria).every(function (c) {
+      return obj[c] == criteria[c];
     });
+  });
 }
 
 async function fetchAsync() {
-    let response = await fetch('/datasets/final_version_dataset.json');
-    let data = await response.json();
-    return data;
+  let response = await fetch('/datasets/final_version_dataset.json');
+  let data = await response.json();
+  return data;
 }
 
 
 // Form functions ===================================================
 
-function submit(){
+function submit() {
   document.body.classList.add('active')
   $("#map").show();
   $("#introForm").hide();
   $("#animation").hide();
+  _response();
 }
 
-function _response(){
+function _response() {
   let age = $("#age").val();
   let gender = $("#gender").val();
   let transportation = $("#transportation").val();
   let time = $("#time").val();
+  let mapType = $("input[type=radio][name=mapType]:checked").val();
   let response = {
     age: age,
     gender: gender,
     transportation: transportation,
-    time: time
+    time: time,
+    mapType: mapType
   }
+  // console.log("response:" + response.mapType);
   return response;
 }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   let radio =  $("input[type=radio][name=mapType]:checked");
+//   checkRadioValue(radio);
+//   $("input[type=radio][name=mapType]:checked").change(function () {
+//     debugger;
+//     checkRadioValue(radio);
+//   })
+// });
+
+// function checkRadioValue(radio) {
+//   if (radio.val() === 'marker') {
+//     console.log("marker");
+
+//   }
+//   if (radio.val() === 'cluster') {
+//     console.log("cluster");
+//   }
+//   if (radio.val() === 'heat') {
+//     console.log("heat");
+//   }
+// }

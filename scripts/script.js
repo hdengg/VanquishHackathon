@@ -288,11 +288,6 @@ function _radius(map, searchBoxLatLon, dataset) {
 //     gender: searchString2
 // };
 
-let query = _response();
-let json = '/datasets/final_version_dataset.json';
-
-find_in_object(json, query);
-
 function find_in_object(my_array, my_criteria) {
     return my_array.filter(function (obj) {
         return Object.keys(my_criteria).every(function (key) {

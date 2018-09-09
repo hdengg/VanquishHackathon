@@ -6,4 +6,10 @@ function submit(){
   let age = $("#age").val();
   let gender = $("#gender").val();
   let transportation = $("#transportation").val();
+  let response = {
+    age: age,
+    gender: gender,
+    transportation: transportation
+  }
+  return response;
 }

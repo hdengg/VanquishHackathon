@@ -13,7 +13,7 @@ function initAutocomplete() {
   var trafficLayer = new google.maps.TrafficLayer();
   trafficLayer.setMap(map);
 
-  _currentLocation(map);
+  // _currentLocation(map);
   _searchBox(map);
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
@@ -86,6 +86,7 @@ function _searchBox(map) {
       }
     });
     map.fitBounds(bounds);
+    map.setZoom(13);
   });
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
@@ -178,7 +179,8 @@ function _createCircle(map, center) {
     fillOpacity: 0.35,
     map: map,
     center: center,
-    radius: 1000
+    radius: 1000,
+    zoom: 18
   });
 }
 
@@ -257,13 +259,14 @@ function _radius(map, searchBoxLatLon, dataset) {
             strokeOpacity: 0.8,
             strokeWeight: 2,
             center: searchBoxLatLon,
-            radius: 500
+            radius: 300
         };
     } else {
         return;
     }
 
     let circle = new google.maps.Circle(search_area);
+    map.setCenter(searchBoxLatLon);
 
     $.getJSON(dataset, function (data) {
         for (coordinate of data) {
@@ -281,3 +284,23 @@ function _radius(map, searchBoxLatLon, dataset) {
 }
 
 
+// Form functions ===================================================
+
+function submit(){
+  document.body.classList.add('active')
+  $("#map").show();
+  $("#introForm").hide();
+  $("#animation").hide();
+}
+
+function _response(){
+  let age = $("#age").val();
+  let gender = $("#gender").val();
+  let transportation = $("#transportation").val();
+  let response = {
+    age: age,
+    gender: gender,
+    transportation: transportation
+  }
+  return response;
+}

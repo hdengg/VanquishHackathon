@@ -106,14 +106,14 @@ function _currentLocation(map) {
       // set a marker 
       let currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
 
-      /*
+      
       // set an info window
       infoWindow = new google.maps.InfoWindow;
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Current Location');
-      infoWindow.open(map);
-      */
+      //infoWindow.setPosition(pos);
+      //infoWindow.setContent('Current Location');
+      //infoWindow.open(map);
+      
 
       map.setCenter(pos);
     }, function () {
@@ -277,8 +277,18 @@ function _radius(map, searchBoxLatLon, dataset) {
                 let marker = new google.maps.Marker({
                     map: map,
                     id: coordinate.covId,
-                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon),
+
+
                 });
+
+                let contentString = "injury type: " + coordinate.injury + ";  age: " + coordinate.age;
+                var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+        });
+                 marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
             }
         }
     })

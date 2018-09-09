@@ -286,15 +286,15 @@ function _radius(map, searchBoxLatLon, dataset) {
 
 async function _filter() {
 
+    // specify filter here... retrieve it from somewhere
     let filter = {
         age: "20-29",
         gender: "M"
     };
 
     let data = await fetchAsync();
-    let response = filter_arr(data, filter);
-    console.log(response);
-    return response;
+    return filter_arr(data, filter);
+
 }
 
 function filter_arr(arr, criteria) {

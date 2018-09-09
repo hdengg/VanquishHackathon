@@ -407,9 +407,9 @@ function filter_arr(arr, criteria) {
 }
 
 async function fetchAsync() {
-  let response = await fetch('/datasets/final_version_dataset.json');
-  let data = await response.json();
-  return data;
+    let response = await fetch('/datasets/final_version_dataset.json');
+    let data = await response.json();
+    return data;
 }
 
 
@@ -440,7 +440,7 @@ function _response() {
     gender: gender,
     transportation: transportation,
     time: time,
-    mapType: mapType
+    // mapType: mapType
   }
   // console.log("response:" + response.mapType);
   return response;

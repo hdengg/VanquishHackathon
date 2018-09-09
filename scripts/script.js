@@ -1,3 +1,4 @@
+
 function initAutocomplete() {
   // object for current position
   // let coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -9,8 +10,18 @@ function initAutocomplete() {
     mapTypeId: 'roadmap'
   });
 
-  _currentLocation(map);
+  var trafficLayer = new google.maps.TrafficLayer();
+  trafficLayer.setMap(map);
 
+  _currentLocation(map);
+  _searchBox(map);
+  // _markerMap(map, '/datasets/collisions-2.json');
+  // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
+  // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
+  // _marketInfoMap(map, '/datasets/hospital_injuries_all.json');
+}
+
+function _searchBox(map) {
   // Create the search box and link it to the UI element.
   let input = document.getElementById('pac-input');
   let searchBox = new google.maps.places.SearchBox(input);
@@ -76,11 +87,11 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
-
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
+
 function _currentLocation(map) {
   // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
   if (navigator.geolocation) {
@@ -132,41 +143,47 @@ function _markerMap(map, dataset) {
   });
 }
 
-// https://developers.google.com/maps/documentation/javascript/heatmaplayer
-function _heatMap(map, dataset) {
-  let heatMapData = [];
+function _marketInfoMap(map, dataset) {
+  // load JSON data
   $.getJSON(dataset, function (data) {
-    for (coordinate of data) {
-      heatMapData.push(new google.maps.LatLng(coordinate.lat, coordinate.lon));
-    }
-    let gradient = [
-      'rgba(0, 255, 255, 0)',
-      'rgba(0, 255, 255, 1)',
-      'rgba(0, 191, 255, 1)',
-      'rgba(0, 127, 255, 1)',
-      'rgba(0, 63, 255, 1)',
-      'rgba(0, 0, 255, 1)',
-      'rgba(0, 0, 223, 1)',
-      'rgba(0, 0, 191, 1)',
-      'rgba(0, 0, 159, 1)',
-      'rgba(0, 0, 127, 1)',
-      'rgba(63, 0, 91, 1)',
-      'rgba(127, 0, 63, 1)',
-      'rgba(191, 0, 31, 1)',
-      'rgba(255, 0, 0, 1)'
-    ]
+    for (collision of data) {
+      let pos = {
+        lat: collision.lat,
+        lng: collision.lon
+      };
+      let marker = new google.maps.Marker({
+        map: map,
+        id: collision.covId,
+        position: new google.maps.LatLng(collision.lat, collision.lon)
+      })
 
-    let heatmap = new google.maps.visualization.HeatmapLayer({
-      data: heatMapData,
-      radius: 28,
-      opacity: .5,
-      gradient: gradient
-    });
-    heatmap.setMap(map);
-  })
+      // set an info window
+      let content = `incident modes: ${collision.modes}. age: ${collision.age}`
+      infoWindow = new google.maps.InfoWindow;
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(content);
+      infoWindow.open(map);
+    }
+  });
 }
 
-function _weightedHeatMap(map, dataset) {
+function _createCircle(map, center) {
+  // let center = {lat: 37.090, lng: -95.712};
+  var cityCircle = new google.maps.Circle({
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    map: map,
+    center: center,
+    radius: 1000
+  });
+}
+
+// https://developers.google.com/maps/documentation/javascript/heatmaplayer
+function _heatMap(map, dataset) {
   let heatMapData = [];
   $.getJSON(dataset, function (data) {
     for (coordinate of data) {
@@ -192,7 +209,7 @@ function _weightedHeatMap(map, dataset) {
       'rgba(127, 0, 63, 1)',
       'rgba(191, 0, 31, 1)',
       'rgba(255, 0, 0, 1)'
-    ]
+    ];
 
     let heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatMapData,

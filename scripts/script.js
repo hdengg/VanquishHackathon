@@ -80,6 +80,10 @@ function _searchBox(map) {
     map.fitBounds(bounds);
   });
 
+  // _markerMap(map, '/datasets/collisions-2.json');
+  // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
+  // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
+  _radius(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
 
 function _currentLocation(map) {
@@ -176,7 +180,12 @@ function _heatMap(map, dataset) {
   let heatMapData = [];
   $.getJSON(dataset, function (data) {
     for (coordinate of data) {
-      heatMapData.push(new google.maps.LatLng(coordinate.lat, coordinate.lon));
+      heatMapData.push(
+
+      // new google.maps.LatLng(37.785, -122.435)
+        {location: new google.maps.LatLng(coordinate.lat, coordinate.lon), weight: coordinate.injuryType}
+        )
+      // {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5}
     }
     let gradient = [
       'rgba(0, 255, 255, 0)',
@@ -204,3 +213,59 @@ function _heatMap(map, dataset) {
     heatmap.setMap(map);
   })
 }
+
+  function _cluster(map, dataset) {
+    // Create an array of alphabetical characters used to label the markers.
+      //var labels = [];
+      var locations = [];
+      // let realLocations;
+       $.getJSON(dataset, function (data) {
+          for(incident of data){
+            locations.push({lat: incident.lat, lng: incident.lon});
+          }
+
+           // The map() method here has nothing to do with the Google Maps API.
+          var markers = locations.map(function(location, i) {
+            return new google.maps.Marker({
+              position: location,
+              //label: labels[i % labels.length]
+            });
+          });
+
+           // Add a marker clusterer to manage the markers.
+          var markerCluster = new MarkerClusterer(map, markers,
+              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+       });
+}
+
+function _radius(map, dataset) {
+    let search_area = [];
+
+    // We create a circle to look within:
+    search_area = {
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        center: new google.maps.LatLng({lat: 49.24741348, lng: -123.1391502}),
+        radius: 500
+    };
+
+    let circle = new google.maps.Circle(search_area);
+
+    $.getJSON(dataset, function (data) {
+        for (coordinate of data) {
+
+            let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({lat: coordinate.lat, lng: coordinate.lon}), circle.center);
+            if (distance < circle.radius) {
+                let marker = new google.maps.Marker({
+                    map: map,
+                    id: coordinate.covId,
+                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+                });
+            }
+        }
+    })
+}
+
+

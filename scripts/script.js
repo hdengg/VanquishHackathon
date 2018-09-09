@@ -77,7 +77,7 @@ function _searchBox(map) {
 
       if (place.geometry.location) {
           searchBoxLatLon = place.geometry.location;
-          _radius(map, searchBoxLatLon, '/datasets/detailed_pedestrian_cyclist.json');
+          _radius(map, searchBoxLatLon, '/datasets/final_version_dataset.json');
       }
 
       if (place.geometry.viewport) {

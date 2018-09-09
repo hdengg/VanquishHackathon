@@ -26,6 +26,7 @@ function _searchBox(map) {
   let input = document.getElementById('pac-input');
   let searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  let searchBoxLatLon = [];
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function () {
@@ -50,6 +51,7 @@ function _searchBox(map) {
 
     // For each place, get the icon, name and location.
     let bounds = new google.maps.LatLngBounds();
+
     places.forEach(function (place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
@@ -71,6 +73,11 @@ function _searchBox(map) {
         position: place.geometry.location
       }));
 
+      if (place.geometry.location) {
+          searchBoxLatLon = place.geometry.location;
+          _radius(map, searchBoxLatLon, '/datasets/detailed_pedestrian_cyclist.json');
+      }
+
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
@@ -83,7 +90,6 @@ function _searchBox(map) {
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
-  _radius(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
 
 function _currentLocation(map) {
@@ -94,6 +100,7 @@ function _currentLocation(map) {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+
       // set a marker 
       let currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
 
@@ -239,17 +246,22 @@ function _heatMap(map, dataset) {
        });
 }
 
-function _radius(map, dataset) {
+function _radius(map, searchBoxLatLon, dataset) {
     let search_area = [];
 
+    console.log(searchBoxLatLon);
     // We create a circle to look within:
-    search_area = {
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        center: new google.maps.LatLng({lat: 49.24741348, lng: -123.1391502}),
-        radius: 500
-    };
+    if (searchBoxLatLon.length !== 0) {
+        search_area = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            center: searchBoxLatLon,
+            radius: 500
+        };
+    } else {
+        return;
+    }
 
     let circle = new google.maps.Circle(search_area);
 

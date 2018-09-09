@@ -74,7 +74,7 @@ p:last-of-type{
     position: relative;
     z-index: 2;
     -webkit-appearance: none;
-    /* background: rgba(192,192,192,0.2); */
+    background: rgba(192,192,192,0.2);
     outline: none;
     border: none;
     text-transform: uppercase;
@@ -83,7 +83,7 @@ p:last-of-type{
     transition: all 0.5s ease;
     font-weight: 600;
     font-size: 14px;
-    height: 60px;
+    height: 35px;
     width: 110px;
     display: flex;
     align-items: center;
@@ -93,14 +93,17 @@ p:last-of-type{
     box-shadow: 0 0 0 white, 0 0 0 white;
 }
 
+.parent{
+    position: relative;
+}
+
 .container{
     position: absolute;
-    width: 300px;
-    height: 200px;
-    z-index: 15;
+    width: 200px;
+    height: 100px;
     top: 50%;
     left: 50%;
-    margin: -100px 0 0 -150px;
+    margin: 100px 0 0 -190px;
 }
   
 .button-text{
@@ -146,7 +149,7 @@ p:last-of-type{
     text-transform: uppercase;
     letter-spacing: 3px;
 }
-
+/* 
 .button-circle{
     position: absolute;
     left: 0;
@@ -175,7 +178,7 @@ p:last-of-type{
     bottom: 0;
     right: 0;
     box-shadow: 0 0 10px #4cfa63, 0 0 20px #4cfa63, 0 0 30px #4cfa63;
-}
+} */
 
 .button:hover{
     box-shadow: -15px 0 70px -15px #504bff, 15px 0 70px -15px #4cfa63;

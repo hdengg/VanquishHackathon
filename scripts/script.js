@@ -13,12 +13,13 @@ function initAutocomplete() {
   var trafficLayer = new google.maps.TrafficLayer();
   trafficLayer.setMap(map);
 
-  _currentLocation(map);
+  // _currentLocation(map);
   _searchBox(map);
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
   // _marketInfoMap(map, '/datasets/hospital_injuries_all.json');
+    _filter();
 }
 
 function _searchBox(map) {
@@ -26,6 +27,7 @@ function _searchBox(map) {
   let input = document.getElementById('pac-input');
   let searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  let searchBoxLatLon = [];
 
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function () {
@@ -50,6 +52,7 @@ function _searchBox(map) {
 
     // For each place, get the icon, name and location.
     let bounds = new google.maps.LatLngBounds();
+
     places.forEach(function (place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
@@ -71,6 +74,11 @@ function _searchBox(map) {
         position: place.geometry.location
       }));
 
+      if (place.geometry.location) {
+          searchBoxLatLon = place.geometry.location;
+          _radius(map, searchBoxLatLon, '/datasets/detailed_pedestrian_cyclist.json');
+      }
+
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
@@ -79,11 +87,11 @@ function _searchBox(map) {
       }
     });
     map.fitBounds(bounds);
+    map.setZoom(13);
   });
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
-  _radius(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
 
 function _currentLocation(map) {
@@ -94,6 +102,7 @@ function _currentLocation(map) {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+
       // set a marker 
       let currentLocationMarker = new google.maps.Marker({ position: pos, map: map });
 
@@ -171,7 +180,8 @@ function _createCircle(map, center) {
     fillOpacity: 0.35,
     map: map,
     center: center,
-    radius: 1000
+    radius: 1000,
+    zoom: 18
   });
 }
 
@@ -239,19 +249,25 @@ function _heatMap(map, dataset) {
        });
 }
 
-function _radius(map, dataset) {
+function _radius(map, searchBoxLatLon, dataset) {
     let search_area = [];
 
+    console.log(searchBoxLatLon);
     // We create a circle to look within:
-    search_area = {
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        center: new google.maps.LatLng({lat: 49.24741348, lng: -123.1391502}),
-        radius: 500
-    };
+    if (searchBoxLatLon.length !== 0) {
+        search_area = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            center: searchBoxLatLon,
+            radius: 300
+        };
+    } else {
+        return;
+    }
 
     let circle = new google.maps.Circle(search_area);
+    map.setCenter(searchBoxLatLon);
 
     $.getJSON(dataset, function (data) {
         for (coordinate of data) {
@@ -268,4 +284,55 @@ function _radius(map, dataset) {
     })
 }
 
+async function _filter() {
 
+    // specify filter here... retrieve it from somewhere
+    let filter = {
+        age: "20-29",
+        gender: "M",
+
+    };
+
+    let data = await fetchAsync();
+    let response = filter_arr(data, filter);
+    return response;
+
+}
+
+function filter_arr(arr, criteria) {
+    return arr.filter(function(obj) {
+        return Object.keys(criteria).every(function(c) {
+            return obj[c] == criteria[c];
+        });
+    });
+}
+
+async function fetchAsync() {
+    let response = await fetch('/datasets/final_version_dataset.json');
+    let data = await response.json();
+    return data;
+}
+
+
+// Form functions ===================================================
+
+function submit(){
+  document.body.classList.add('active')
+  $("#map").show();
+  $("#introForm").hide();
+  $("#animation").hide();
+}
+
+function _response(){
+  let age = $("#age").val();
+  let gender = $("#gender").val();
+  let transportation = $("#transportation").val();
+  let time = $("#time").val();
+  let response = {
+    age: age,
+    gender: gender,
+    transportation: transportation,
+    time: time
+  }
+  return response;
+}

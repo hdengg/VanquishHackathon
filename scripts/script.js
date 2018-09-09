@@ -384,7 +384,7 @@ function filter_arr(arr, criteria) {
 }
 
 async function fetchAsync() {
-    let response = await fetch('/datasets/final_vesion_dataset.json');
+    let response = await fetch('/datasets/final_version_dataset.json');
     let data = await response.json();
     return data;
 }

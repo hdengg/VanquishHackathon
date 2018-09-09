@@ -289,11 +289,15 @@ async function _filter() {
     // specify filter here... retrieve it from somewhere
     let filter = {
         age: "20-29",
-        gender: "M"
+        gender: "M",
+        modes: "1",
+        time: "Day"
+
     };
 
     let data = await fetchAsync();
-    return filter_arr(data, filter);
+    let response = filter_arr(data, filter);
+    return response;
 
 }
 

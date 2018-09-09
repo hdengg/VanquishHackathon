@@ -73,7 +73,7 @@ function initAutocomplete() {
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
-  _cluster(map, '/datasets/detailed_pedestrian_cyclist.json');
+  _radius(map, '/datasets/detailed_pedestrian_cyclist.json');
 }
 function _currentLocation(map) {
   // get current location: https://developers.google.com/maps/documentation/javascript/geolocation
@@ -202,7 +202,7 @@ function _weightedHeatMap(map, dataset) {
       //var labels = [];
       var locations = [];
       // let realLocations;
-       $.getJSON(dataset, function (data) { 
+       $.getJSON(dataset, function (data) {
           for(incident of data){
             locations.push({lat: incident.lat, lng: incident.lon});
           }
@@ -214,10 +214,42 @@ function _weightedHeatMap(map, dataset) {
               //label: labels[i % labels.length]
             });
           });
-          
-          // Add a marker clusterer to manage the markers.
+
+           // Add a marker clusterer to manage the markers.
           var markerCluster = new MarkerClusterer(map, markers,
               {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
        });
 }
+
+function _radius(map, dataset) {
+    let search_area = [];
+
+    // We create a circle to look within:
+    search_area = {
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        center: new google.maps.LatLng({lat: 49.24741348, lng: -123.1391502}),
+        radius: 500
+    };
+
+    let circle = new google.maps.Circle(search_area);
+
+    $.getJSON(dataset, function (data) {
+        for (coordinate of data) {
+
+            let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng({lat: coordinate.lat, lng: coordinate.lon}), circle.center);
+            console.log(distance);
+            if (distance < circle.radius) {
+                let marker = new google.maps.Marker({
+                    map: map,
+                    id: coordinate.covId,
+                    position: new google.maps.LatLng(coordinate.lat, coordinate.lon)
+                });
+            }
+        }
+    })
+}
+
+

@@ -125,36 +125,24 @@ function _markerMap(map, dataset) {
   });
 }
 
-// filtering 
-function _changeMap() {
+// filtering
+function changeMap() {
     let searchString0 = document.getElementById('search-string_0').value;
     let searchString1 = document.getElementById('search-string_1').value;
     let searchString2 = document.getElementById('search-string_2').value;
-    const jsonData = require('/datasets/weighted_data_fixed');
-    console.log(jsonData);
+    console.log(searchString0);
+    console.log(searchString1);
+    console.log(searchString2);
+    console.log("hi");
+    // const jsonData = require('/datasets/weighted_data_fixed');
 
-
-    if (searchString0 !== '--Select--') {
+    if (searchString0 !== "") {
         //
     }
 
-    if (searchString1 !== '--Select--') {
+    if ((searchString1 !== "") && (searchString2 !== "")) {
         let query = {
-            age: searchString1
-        };
-        console.log(searchString1);
-        let filteredData = find_in_object(jsonData, query);
-        for (collision of filteredData) {
-            let marker = new google.maps.Marker({
-                map: map,
-                id: collision.covId,
-                position: new google.maps.LatLng(collision.lat, collision.lon)
-            });
-        }
-    }
-
-    if (searchString2 !== '--Select--') {
-        let query = {
+            age: searchString1,
             gender: searchString2
         };
         let filteredData = find_in_object(jsonData, query);

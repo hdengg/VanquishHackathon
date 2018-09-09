@@ -19,6 +19,7 @@ function initAutocomplete() {
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   // _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');
   // _marketInfoMap(map, '/datasets/hospital_injuries_all.json');
+    _filter();
 }
 
 function _searchBox(map) {
@@ -283,20 +284,30 @@ function _radius(map, searchBoxLatLon, dataset) {
     })
 }
 
-// let query = {
-//     age: searchString1,
-//     gender: searchString2
-// };
+function _filter() {
 
-function find_in_object(my_array, my_criteria) {
-    return my_array.filter(function (obj) {
-        return Object.keys(my_criteria).every(function (key) {
-            return (Array.isArray(my_criteria[key]) &&
-                (my_criteria[key].some(function (criteria) {
-                    return (typeof obj[key] === 'string' && obj[key].indexOf(criteria) === -1)
-                })) || my_criteria[key].length === 0);
+    let filter = {
+        age: "20-29",
+        gender: "M"
+    };
+
+    fetchAsync().then(data =>
+        console.log(filter_arr(data, filter)))
+        .catch(reason => console.log(reason.message));
+}
+
+function filter_arr(arr, criteria) {
+    return arr.filter(function(obj) {
+        return Object.keys(criteria).every(function(c) {
+            return obj[c] == criteria[c];
         });
     });
+}
+
+async function fetchAsync() {
+    let response = await fetch('/datasets/final_version_dataset.json');
+    let data = await response.json();
+    return data;
 }
 
 

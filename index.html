@@ -5,44 +5,90 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <title>Covision</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/main1.css">
 </head>
 
 <body>
-<div style="margin-top: 10px;">
-
-    <select id="search-string_0" onchange="changeMap();">
-        <option value="--Select--">-- Mode of Transportation --</option>
-        <option value="Walking">Walking</option>
-        <option value="Cycling">Cycling</option>
-    </select>
-
-    <select id="search-string_1" onchange="changeMap();">
-        <option value="--Select--">-- Age --</option>
-        <option   value="0-10"  >0-10</option>
-        <option   value="10-19"  >10-19</option>
-        <option   value="20-29"  >20-29</option>
-        <option   value="30-39"  >30-39</option>
-        <option   value="40-49"  >40-49</option>
-        <option   value="50-59"  >50-59</option>
-        <option   value="60-69"  >60-69</option>
-        <option   value="70+"  >70+</option>
-    </select>
-
-    <select id="search-string_2" onchange="changeMap();">
-        <option value="--Select--">-- Gender --</option>
-        <option   value="M">M</option>
-        <option   value="F">F</option>
-
-    </select>
-
-</div>
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
   <div id="map"></div>
+  <div style="margin-top: 10px;">
+    <form class="container" id="introForm">
+      <div class="form-group wrap-input100">
+        <select class="select-text form-control select-wrapper" id="transportation">
+          <option value="--Select--">-- Mode of Transportation --</option>
+          <option value="Walking">Walking</option>
+          <option value="Cycling">Cycling</option>
+        </select>
+      </div>
+
+      <div class="form-group wrap-input100">
+        <select class="select-text form-control select-wrapper" id="age">
+          <option value="--Select--">-- Age --</option>
+          <option value="0-10">0-10</option>
+          <option value="10-19">10-19</option>
+          <option value="20-29">20-29</option>
+          <option value="30-39">30-39</option>
+          <option value="40-49">40-49</option>
+          <option value="50-59">50-59</option>
+          <option value="60-69">60-69</option>
+          <option value="70+">70+</option>
+        </select>
+      </div>
+
+      <div class="form-group wrap-input100">
+        <select class="select-text form-control select-wrapper" id="gender">
+          <option value="--Select--">-- Gender --</option>
+          <option value="M">M</option>
+          <option value="F">F</option>
+        </select>
+      </div>
+
+      <div class="form-group wrap-input100">
+        <input id="pac-input" class="select-text input100 form-control select-wrapper controls" type="text" placeholder="Destination">
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="">
+        <div class="button" onclick="submit()">
+
+          <span class="button-text">Go!</span>
+
+          <div class="button-backgrounds">
+            <div class="button-circle button-circle1"></div>
+            <div class="button-circle button-circle2"></div>
+            <div class="button-circle button-circle3"></div>
+            <div class="button-circle button-circle4"></div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="wrapper" id="animation">
+      <div class="popup">
+        <div class="popup-inside">
+          <div class="backgrounds">
+            <div class="background"></div>
+            <div class="background background2"></div>
+            <div class="background background3"></div>
+            <div class="background background4"></div>
+            <div class="background background5"></div>
+            <div class="background background6"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="map"></div> -->
   <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyDyZzpxL62X2kzoj-2exCx3_c89VQtzxK0&libraries=places,visualization&callback=initAutocomplete"
     async defer></script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="scripts/script.js"></script>
+  <script src="scripts/form.js"></script>
 </body>
 
 </html>

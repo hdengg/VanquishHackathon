@@ -70,7 +70,6 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
-
   // _markerMap(map, '/datasets/collisions-2.json');
   // _heatMap(map, '/datasets/pedestrian_lat_lon.json');
   _weightedHeatMap(map, '/datasets/detailed_pedestrian_cyclist.json');

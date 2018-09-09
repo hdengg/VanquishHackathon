@@ -288,7 +288,6 @@ let query = {
     gender: searchString2
 };
 
-//
 
 find_in_object(json, query);
 

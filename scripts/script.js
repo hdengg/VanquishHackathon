@@ -147,17 +147,17 @@ function _markerMap(map, dataset) {
 
 // deprecated method
 
-// function _markerMapFilter(dataset) {
-//     // load JSON data
-//     for (collision of dataset) {
-//         console.log(collision);
-//         let marker = new google.maps.Marker({
-//             map: map,
-//             id: collision.covId,
-//             position: new google.maps.LatLng(collision.lat, collision.lon)
-//         })
-//     }
-// }
+function _markerMapFilter(dataset) {
+    // load JSON data
+    for (collision of dataset) {
+        console.log(collision);
+        let marker = new google.maps.Marker({
+            map: map,
+            id: collision.covId,
+            position: new google.maps.LatLng(collision.lat, collision.lon)
+        })
+    }
+}
 
 function _marketInfoMap(map, dataset) {
   // load JSON data
@@ -407,9 +407,9 @@ function filter_arr(arr, criteria) {
 }
 
 async function fetchAsync() {
-    let response = await fetch('/datasets/final_version_dataset.json');
-    let data = await response.json();
-    return data;
+  let response = await fetch('/datasets/final_version_dataset.json');
+  let data = await response.json();
+  return data;
 }
 
 
@@ -422,48 +422,30 @@ function submit() {
   $("#animation").hide();
   let query = _response();
   let response = _filter(query);
+  // let mapType = $("input[type=radio][name=mapType]:checked").val();
+  let mapType = $("#mapType").val();
   response.then(function (result) {
     console.log("result" + result);
-    _heatMapFilter(result);
+    if (mapType === "marker") {
+      _markerMapFilter(result);
+    } else if (mapType === "heatmap") {
+      _heatMapFilter(result);
+    } else if (mapType === "cluster") {
+      _cluster_filter(result);
+    }
   });
-
 }
 
 function _response() {
   let age = $("#age").val();
-  let gender = $("#gender").val();
+  // let gender = $("#gender").val();
   let transportation = $("#transportation").val();
   let time = $("#time").val();
-  let mapType = $("input[type=radio][name=mapType]:checked").val();
   let response = {
     age: age,
-    gender: gender,
+    // gender: gender,
     modes: transportation,
     time: time,
-    // mapType: mapType
   }
-  // console.log("response:" + response.mapType);
   return response;
 }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   let radio =  $("input[type=radio][name=mapType]:checked");
-//   checkRadioValue(radio);
-//   $("input[type=radio][name=mapType]:checked").change(function () {
-//     debugger;
-//     checkRadioValue(radio);
-//   })
-// });
-
-// function checkRadioValue(radio) {
-//   if (radio.val() === 'marker') {
-//     console.log("marker");
-
-//   }
-//   if (radio.val() === 'cluster') {
-//     console.log("cluster");
-//   }
-//   if (radio.val() === 'heat') {
-//     console.log("heat");
-//   }
-// }

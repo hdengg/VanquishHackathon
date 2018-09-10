@@ -31,24 +31,31 @@
     <div class="parent">
       <form class="container" id="introForm">
         <img id="header" src="images/header.png" />
+
         <div class="form-group wrap-input100">
           <div class="form-group wrap-input100">
             <input id="pac-input" class="destination-text input100 form-control select-wrapper controls" type="text"
-              placeholder="Your destination">
+              placeholder="I am going to (destination)">
 
             <span class="focus-input100"></span>
           </div>
 
           <select class="select-text form-control select-wrapper" id="transportation">
-            <option value="--Select--">Your mode of transportation</option>
-            <option value="0">Walking</option>
-            <option value="1">Cycling</option>
+            <option value="0">by walking</option>
+            <option value="1">by biking</option>
           </select>
         </div>
 
         <div class="form-group wrap-input100">
+            <select class="select-text form-control select-wrapper" id="time">
+              <option value="Day">during the day.</option>
+              <option value="Night">during the night.</option>
+            </select>
+          </div>
+
+        <div class="form-group wrap-input100">
           <select class="select-text form-control select-wrapper" id="age">
-            <option value="--Select--">Your age</option>
+            <option value="--Select--">I am ( ) years old</option>
             <option value="0-10">0-10</option>
             <option value="10-19">10-19</option>
             <option value="20-29">20-29</option>
@@ -61,24 +68,24 @@
         </div>
 
         <div class="form-group wrap-input100">
-          <select class="select-text form-control select-wrapper" id="time">
-            <option value="--Select--">Your time of travel</option>
-            <option value="Day">Day time</option>
-            <option value="Night">Night time</option>
-          </select>
-        </div>
-
+            <select class="select-text form-control select-wrapper" id="mapType">
+              <option value="marker">And I want to see a marker map</option>
+              <option value="cluster">And I want to see a cluster map</option>
+              <option value="heatmap">And I want to see a heat map</option>
+            </select>
+          </div>
+<!-- 
         <div class="form-group wrap-input100">
           <select class="select-text form-control select-wrapper" id="gender">
             <option value="--Select--">Your gender</option>
             <option value="M">Male</option>
             <option value="F">Female</option>
           </select>
-        </div>
+        </div> -->
 
-        <div class=" form-group wrap-input100 wrapper-1 btn-group btn-group-toggle" id="typeOfMaps" data-toggle="buttons">
+        <!-- <div class="form-group wrap-input100 wrapper-1 btn-group btn-group-toggle" id="typeOfMaps" data-toggle="buttons">
           <label class="btn btn-secondary active">
-            <input type="radio" name="mapType" value="marker" autocomplete="off" checked> Markers
+            <input type="radio" name="mapType" value="marker" autocomplete="off"> Markers
           </label>
           <label class="btn btn-secondary">
             <input type="radio" name="mapType" value="cluster" autocomplete="off"> Cluster
@@ -86,7 +93,7 @@
           <label class="btn btn-secondary">
             <input type="radio" name="mapType" value="heatmap" autocomplete="off"> Heatmap
           </label>
-        </div>
+        </div> -->
 
         <div class="">
           <div class="button" onclick="submit()">
